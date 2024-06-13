@@ -6,9 +6,10 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
+                        <img src="{{ ('Recursos/logosin.png') }}" alt="Logo" class="block h-9 w-auto fill-current text-gray-800" />
                     </a>
                 </div>
+
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
@@ -27,7 +28,7 @@
                     <x-nav-link :href="route('ventas.index')" :active="request()->routeIs('productos')">
                         {{ __('Ventas') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('compras.index')" :active="request()->routeIs('productos')">
+                    <x-nav-link :href="route('productos.index')" :active="request()->routeIs('productos')">
                         {{ __('Compras') }}
                     </x-nav-link>
                     <x-nav-link :href="route('productos.index')" :active="request()->routeIs('productos')">
