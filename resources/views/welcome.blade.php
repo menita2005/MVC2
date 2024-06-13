@@ -24,8 +24,8 @@
                 <!-- header -->
                 <header class="grid grid-cols-2 items-center gap-2 py-10 lg:grid-cols-3">
     <div class="flex items-center lg:justify-start lg:col-start-1">
-        <img src="{{ ('Recursos/logosin.png') }}" alt="Logo" class="block h-7 w-auto fill-current text-gray-800" />
-        <span class="ml-2 text-xl font-semibold text-black dark:text-black">   WALL INVENTARY</span>
+        <img src="{{ ('Recursos/logosin.png') }}" alt="Logo" class="block h-3 w-auto fill-current text-gray-800" />
+        <span class="ml-6 text-xl font-semibold text-black dark:text-black">WALL INVENTARY</span>
     </div>
     @if (Route::has('login'))
         <nav class="-mx-3 flex flex-1 justify-end">
@@ -57,15 +57,15 @@
     @endif
 </header>
 
-
-
                     <main class="mt-6">
     <div class="grid gap-6 lg:grid-cols-2 lg:gap-8">
         <!-- Tarjeta 1: Documentación -->
         <div
     id="docs-card"
     class="flex flex-col items-start gap-6 overflow-hidden rounded-lg bg-white p-6 shadow-[0px_14px_34px_0px_rgba(0,0,0,0.08)] ring-1 ring-white/[0.05] transition duration-300 hover:text-black/70 hover:ring-black/20 focus:outline-none focus-visible:ring-[#FF2D20] md:row-span-3 lg:p-10 lg:pb-10 dark:bg-zinc-900 dark:ring-zinc-800 dark:hover:text-white/70 dark:hover:ring-zinc-700 dark:focus-visible:ring-[#FF2D20]"
->
+    
+    >
+
     <div id="screenshot-container" class="relative flex w-full flex-1 items-stretch">
         <!-- Agregando la imagen -->
         <img
@@ -191,9 +191,14 @@
 </main>
 
 
-                    <footer class="py-16 text-center text-sm text-black dark:text-white/70">
-                        Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
-                    </footer>
+<footer class="py-16 flex justify-between items-center text-sm text-black dark:text-white/70">
+    <div class="flex items-center">
+        <img src="Recursos/logocon.png" alt="Logo" class="h-10 w-auto" />
+    </div>
+    
+</footer>
+
+
                 </div>
             </div>
         </div>
