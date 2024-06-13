@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Validator;
 
 class CategoriaController extends Controller
 {
-    
     public function index()
     {
         // Obtener el usuario autenticado
@@ -19,79 +18,87 @@ class CategoriaController extends Controller
         // Obtener Categorias de la API
         $response = Http::get("http://localhost/ApiRestProjet/ApiRestSgi/public/api/Categoria");
         
-        // Filtrar Categorias por el user_id del usuario autenticado
-        $categorias = collect($response->json())->filter(function ($categorias) use ($user) {
-            return $categorias['user_id'] == $user->id;
-        })->values()->all();
+        if ($response->successful()) {
+            // Filtrar Categorias por el user_id del usuario autenticado
+            $categorias = collect($response->json())->filter(function ($categoria) use ($user) {
+                return isset($categoria['user_id']) && $categoria['user_id'] == $user->id;
+            })->values()->all();
+        } else {
+            $categorias = [];
+        }
 
-        
+        if (empty($categorias)) {
+            return view('categorias.index', compact('categorias'))->with('message', 'No hay categorías disponibles.');
+        }
 
         return view('categorias.index', compact('categorias'));
     }
 
-public function store(Request $request)
+    public function store(Request $request)
     {
         // Validar los datos entrantes de la solicitud
         $validator = Validator::make($request->all(), [
-            
-            'Nombre' => 'required|string|max:255'
-            
-           
+            'Nombre' => 'required|string|max:255',
         ]);
-    
+
         if ($validator->fails()) {
-            $data = [
-                'message' => 'Error en la validación de los datos',
-                'error' => $validator->errors(),
-                'status' => 400
-            ];
-            return response()->json($data, 400);
+            return redirect()->back()->withErrors($validator)->withInput();
         }
-    
+
         // Obtener el ID del usuario autenticado
         $userId = auth()->id();
-    
+
         // Agregar el user_id a los datos validados
         $validatedData = $validator->validated();
         $validatedData['user_id'] = $userId;
-    
-        // Crear el nuevo Categoria usando los datos validados
-        $Categoria = Categoria::create($validatedData);
-    
-        if (!$Categoria) {
-            $data = [
-                'message' => 'Error al crear el Categoria',
-                'status' => 500
-            ];
-            return response()->json($data, 500);
-        }
-    
-       
-    
-        $data = [
-            'Categoria' => $Categoria,
-            'status' => 201
-        ];
-        return redirect()->route('categorias.index')->with('success', 'Categoria creado exitosamente');
-    }
 
+        // Crear el nuevo Categoria usando los datos validados
+        $categoria = Categoria::create($validatedData);
+
+        if (!$categoria) {
+            return redirect()->back()->with('error', 'Error al crear la categoría.');
+        }
+
+        return redirect()->route('categorias.index')->with('success', 'Categoría creada exitosamente.');
+    }
 
     public function show($id)
     {
-        $Categoria = Categoria::find($id);
-        return response()->json($Categoria);
+        $categoria = Categoria::find($id);
+
+        if (!$categoria) {
+            return response()->json(['message' => 'Categoría no encontrada'], 404);
+        }
+
+        return response()->json($categoria);
     }
 
     public function update(Request $request, $id)
     {
-        $Categoria = Categoria::findOrFail($id);
-        $Categoria->update($request->all());
-        return redirect()->route('categorias.index')->with('success', 'Categoria creado exitosamente');
+        $validator = Validator::make($request->all(), [
+            'Nombre' => 'required|string|max:255',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        $categoria = Categoria::findOrFail($id);
+        $categoria->update($validator->validated());
+
+        return redirect()->route('categorias.index')->with('success', 'Categoría actualizada exitosamente.');
     }
 
     public function destroy($id)
     {
-        Categoria::destroy($id);
-        return redirect()->route('categorias.index')->with('success', 'Categoria creado exitosamente');
+        $categoria = Categoria::find($id);
+
+        if (!$categoria) {
+            return redirect()->route('categorias.index')->with('error', 'Categoría no encontrada.');
+        }
+
+        $categoria->delete();
+
+        return redirect()->route('categorias.index')->with('success', 'Categoría eliminada exitosamente.');
     }
 }

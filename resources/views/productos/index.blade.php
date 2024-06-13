@@ -24,12 +24,7 @@
 
     <h1 class="fs-1 text-center">Lista de Productos</h1>
     <button class="btn btn-primary mb-4" onclick="toggleForm('productForm')">Agregar Producto</button>
-
-   
-
-    @if (!empty($productos))
-     <!-- Formulario para agregar un nuevo producto -->
-     <div id="productForm" style="display: none;">
+ <div id="productForm" style="display: none;">
         <form action="{{ route('productos.store') }}" method="POST">
             @csrf
             <div class="form-group">
@@ -67,6 +62,11 @@
             <button type="submit" class="btn btn-success mt-3">Agregar Producto</button>
         </form>
     </div>
+   
+
+    @if (!empty($productos))
+     <!-- Formulario para agregar un nuevo producto -->
+    
         <div class="table-responsive">
             <table class="table table-bordered">
                 <thead>

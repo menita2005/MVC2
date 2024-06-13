@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\VentaController;
 use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\CompraController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProveedorController;
@@ -24,6 +25,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('/proveedors', ProveedorController::class);
     Route::resource('/categorias', CategoriaController::class);
     Route::resource('/ventas', VentaController::class);
+    Route::resource('/compras', CompraController::class);
 });
 
 require __DIR__.'/auth.php';
