@@ -29,22 +29,6 @@ class CategoriaController extends Controller
         return view('categorias.index', compact('categorias'));
     }
 
-//     public function store(Request $request)
-// {
-//     $request->merge(['user_id' => Auth::id()]);
-
-//     // Realizar la solicitud a la API para crear el Categoria
-//     $response = Http::post("http://localhost/ApiRestProjet/ApiRestSgi/public/api/Categorias", $request->all());
-
-//     // Verificar si la solicitud fue exitosa
-//     if ($response->successful()) {
-//         // Redirigir de vuelta a la página de Categorias con un mensaje de éxito
-//         return redirect()->route('Categorias.index')->with('success', '¡El Categoria se ha creado exitosamente!');
-//     } else {
-//         // Manejar el caso en que la solicitud no fue exitosa
-//         return redirect()->route('Categorias.index')->with('error', 'Ha ocurrido un error al crear el Categoria. Por favor, intenta de nuevo.');
-//     }
-// }
 public function store(Request $request)
     {
         // Validar los datos entrantes de la solicitud

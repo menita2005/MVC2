@@ -15,35 +15,33 @@ class ProductoController extends Controller
         
         // Obtener productos de la API
         $response = Http::get("http://localhost/ApiRestProjet/ApiRestSgi/public/api/productos");
-        
-        // Filtrar productos por el user_id del usuario autenticado
-        $productos = collect($response->json())->filter(function ($producto) use ($user) {
-            return $producto['user_id'] == $user->id;
-        })->values()->all();
-
+    
+        // Verificar si la respuesta es exitosa y es un array
+        if ($response->successful() && is_array($response->json())) {
+            // Filtrar productos por el user_id del usuario autenticado
+            $productos = collect($response->json())->filter(function ($producto) use ($user) {
+                return $producto['user_id'] == $user->id;
+            })->values()->all();
+        } else {
+            // Si la respuesta no es exitosa o no es un array, asignar productos como un array vacío
+            $productos = [];
+        }
+    
         // Obtener categorías y proveedores
         $categorias = Http::get("http://localhost/ApiRestProjet/ApiRestSgi/public/api/Categoria")->json();
         $proveedores = Http::get("http://localhost/ApiRestProjet/ApiRestSgi/public/api/Proveedors")->json();
-
+    
+        // Verificar si no hay productos
+        if (empty($productos)) {
+            return view('productos.index', compact('categorias', 'proveedores'))
+                   ->with('message', 'No hay productos disponibles.');
+        }
+    
         return view('productos.index', compact('productos', 'categorias', 'proveedores'));
     }
+    
 
-//     public function store(Request $request)
-// {
-//     $request->merge(['user_id' => Auth::id()]);
 
-//     // Realizar la solicitud a la API para crear el producto
-//     $response = Http::post("http://localhost/ApiRestProjet/ApiRestSgi/public/api/productos", $request->all());
-
-//     // Verificar si la solicitud fue exitosa
-//     if ($response->successful()) {
-//         // Redirigir de vuelta a la página de productos con un mensaje de éxito
-//         return redirect()->route('productos.index')->with('success', '¡El producto se ha creado exitosamente!');
-//     } else {
-//         // Manejar el caso en que la solicitud no fue exitosa
-//         return redirect()->route('productos.index')->with('error', 'Ha ocurrido un error al crear el producto. Por favor, intenta de nuevo.');
-//     }
-// }
 public function store(Request $request)
     {
         // Validar los datos entrantes de la solicitud

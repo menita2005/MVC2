@@ -27,22 +27,7 @@ class ProveedorController extends Controller
         return view('proveedors.index', compact('proveedores'));
     }
 
-//     public function store(Request $request)
-// {
-//     $request->merge(['user_id' => Auth::id()]);
 
-//     // Realizar la solicitud a la API para crear el proveedor
-//     $response = Http::post("http://localhost/ApiRestProjet/ApiRestSgi/public/api/proveedors", $request->all());
-
-//     // Verificar si la solicitud fue exitosa
-//     if ($response->successful()) {
-//         // Redirigir de vuelta a la página de proveedors con un mensaje de éxito
-//         return redirect()->route('proveedors.index')->with('success', '¡El proveedor se ha creado exitosamente!');
-//     } else {
-//         // Manejar el caso en que la solicitud no fue exitosa
-//         return redirect()->route('proveedors.index')->with('error', 'Ha ocurrido un error al crear el proveedor. Por favor, intenta de nuevo.');
-//     }
-// }
 public function store(Request $request)
     {
         // Validar los datos entrantes de la solicitud
