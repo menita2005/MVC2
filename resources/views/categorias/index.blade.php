@@ -9,7 +9,7 @@
 
     <br><br>
     <div style="display: flex; justify-content: center;">
-        <table border="1" style="border-collapse: collapse; width: 80%;">
+        <table  class="table table-bordered" style="border-collapse: collapse; width: 80%;">
             <tr>
                 <th>ID</th>
                 <th>Nombre</th>
