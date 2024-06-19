@@ -2,6 +2,7 @@
 
 @section('content')
 <body>
+    <div class="container">
     <!-- Formulario para crear una nueva categoría -->
     <br><br>
     <h1 class="fs-1" style="text-align: center;">Lista de Categorías</h1>
@@ -9,7 +10,7 @@
 
     <br><br>
     <div style="display: flex; justify-content: center;">
-        <table  class="table table-bordered" style="border-collapse: collapse; width: 80%;">
+        <table  class="table table-bordered" style="border-collapse: collapse; width: 100%;">
             <tr>
                 <th>ID</th>
                 <th>Nombre</th>

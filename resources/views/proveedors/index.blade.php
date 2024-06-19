@@ -2,14 +2,15 @@
 
 @section('content')
 <body>
+    <div class="container">
     <!-- Formulario para crear un nuevo proveedor -->
     <br><br>
     <h1 class="fs-1" style="text-align: center;">Lista de Proveedores</h1>
-    <button class="btn btn-primary" style="display: flex; justify-content: center;" onclick="document.getElementById('providerForm').style.display='flex'">Agregar Proveedor</button>
+    <button class="btn btn-primary mb-4" onclick="document.getElementById('providerForm').style.display='flex'">Agregar Proveedor</button>
 
     <br><br>
     <div style="display: flex; justify-content: center;">
-        <table  class="table table-bordered" style="border-collapse: collapse; width: 80%;">
+        <table  class="table table-bordered" style="border-collapse: collapse; width: 100%;">
             <tr>
                 <th>ID</th>
                 <th>Nombre</th>

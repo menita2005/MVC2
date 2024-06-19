@@ -2,7 +2,8 @@
 
     @section('content')
     <div class="container">
-        <h1>Listado de Ventas</h1>
+        <br><br>
+        <h1  class="fs-1 text-center">Listado de Ventas</h1>
 
         <!-- Mostrar mensajes de éxito o error -->
         @if (session('success'))
@@ -16,7 +17,30 @@
                 {{ session('error') }}
             </div>
         @endif
-
+        <br><br>
+        <div class="card">
+        <h2 class="card-header">Crear Nueva Venta</h2>
+        <div class="card-body">
+        <form action="{{ route('ventas.store') }}" method="POST">
+            @csrf
+            <div class="form-group">
+                <label for="producto_id">Producto</label>
+                <select class="form-control" id="producto_id" name="producto_id" required>
+                    @foreach ($productos as $producto)
+                        <option value="{{ $producto['id'] }}">{{ $producto['NombreP'] }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="c_compra">Cantidad</label>
+                <input type="number" class="form-control" id="c_compra" name="c_compra" required>
+            </div>
+            <br>
+            <button type="submit" class="btn btn-primary">Crear Venta</button>
+        </form>
+        </div>
+        </div>
+        <br><br>
         <!-- Tabla de Ventas -->
         <table class="table">
             <thead>
@@ -51,22 +75,6 @@
         </table>
 
         <!-- Formulario para crear una nueva venta -->
-        <h2>Crear Nueva Venta</h2>
-        <form action="{{ route('ventas.store') }}" method="POST">
-            @csrf
-            <div class="form-group">
-                <label for="producto_id">Producto</label>
-                <select class="form-control" id="producto_id" name="producto_id" required>
-                    @foreach ($productos as $producto)
-                        <option value="{{ $producto['id'] }}">{{ $producto['NombreP'] }}</option>
-                    @endforeach
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="c_compra">Cantidad</label>
-                <input type="number" class="form-control" id="c_compra" name="c_compra" required>
-            </div>
-            <button type="submit" class="btn btn-primary">Crear Venta</button>
-        </form>
+        
     </div>
     @endsection

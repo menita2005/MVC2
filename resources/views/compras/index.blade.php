@@ -19,9 +19,9 @@
             {{ session('error') }}
         </div>
     @endif
-
+<br><br>
     <h1 class="fs-1 text-center">Lista de Compras</h1>
-    <a href="{{ route('compras.create') }}" class="btn btn-primary mb-4">Agregar Compra</a>
+<br><br>
 
     {{-- Formulario para crear una nueva compra --}}
     <div class="card">
