@@ -24,8 +24,8 @@
                 <!-- header -->
                 <header class="grid grid-cols-2 items-center gap-2 py-10 lg:grid-cols-2">
     <div class="flex items-center lg:justify-start lg:col-start-1">
-        <img src="{{ ('Recursos/logosin1.png') }}" alt="Logo" class="block h-3 w-auto fill-current text-gray-800" />
-        <span class="ml-6 text-xl font-semibold text-black dark:text-black">WALL INVENTARY</span>
+        <img src="{{ ('Recursos/logonegro.png') }}" alt="Logo" class="block h-3 w-auto fill-current text-gray-800" />
+        <span class="ml-6 text-xl font-semibold text-black dark:text-black">Wall Inventary</span>
     </div>
     @if (Route::has('login'))
         <nav class="-mx-3 flex flex-1 justify-end">
@@ -41,7 +41,7 @@
                     href="{{ route('login') }}"
                     class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-black dark:hover:text-black/80 dark:focus-visible:ring-white"
                     >
-                    Log in
+                    Log In
                 </a>
 
                 @if (Route::has('register'))
@@ -193,7 +193,7 @@
 
 <footer class="fixed bottom-0 py-16 w-full flex justify-between items-center text-sm text-black dark:text-white/70">
     <div class="flex items-center mx-auto">
-        <img src="Recursos/logocon.png" alt="Logo" class="h-4 w-auto" />
+        <img src="Recursos/logoblanco.png" alt="Logo" class="h-4 w-auto" />
     </div>
 </footer>
 
