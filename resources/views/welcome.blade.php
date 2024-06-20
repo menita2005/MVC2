@@ -24,8 +24,8 @@
                 <!-- header -->
                 <header class="grid grid-cols-2 items-center gap-2 py-10 lg:grid-cols-2">
     <div class="flex items-center lg:justify-start lg:col-start-1">
-        <img src="{{ ('Recursos/logonegro.png') }}" alt="Logo" class="block h-3 w-auto fill-current text-gray-800" />
-        <span class="ml-6 text-xl font-semibold text-black dark:text-black">Wall Inventary</span>
+    <img src="{{ ('Recursos/logonegro.png') }}" alt="Logo" class="block fill-current text-gray-800" style="width: 250px; height: auto;" />
+    <span class="ml-6 text-xl font-semibold text-black dark:text-black">Wall Inventary</span>
     </div>
     @if (Route::has('login'))
         <nav class="-mx-3 flex flex-1 justify-end">
@@ -193,7 +193,7 @@
 
 <footer class="fixed bottom-0 py-16 w-full flex justify-between items-center text-sm text-black dark:text-white/70">
     <div class="flex items-center mx-auto">
-        <img src="Recursos/logoblanco.png" alt="Logo" class="h-4 w-auto" />
+    <img src="Recursos/logoblanco.png" alt="Logo" width="250px" />
     </div>
 </footer>
 
