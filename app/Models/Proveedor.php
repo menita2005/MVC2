@@ -21,4 +21,8 @@ class Proveedor extends Model
     {
         return $this->hasMany(Producto::class);
     }
+    public function isActive()
+    {
+        return $this->status;
+    }
 }

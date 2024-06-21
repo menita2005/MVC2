@@ -7,12 +7,13 @@
     <h1 class="fs-1" style="text-align: center;">Lista de Categorías</h1>
 
     <!-- Botón para agregar categoría, visible solo para admins -->
-    @if(auth()->user()->usertype === 'admin')
+    @if(auth()->user()->role === 'admin')
     <button class="btn btn-primary mb-4" style="display: flex; justify-content: center;" onclick="document.getElementById('categoryForm').style.display='flex'">Agregar Categoría</button>
     @endif
 
     <br><br>
     <div style="display: flex; justify-content: center;">
+        @if(!empty($categorias))
         <table class="table table-bordered" style="border-collapse: collapse; width: 100%;">
             <thead>
                 <tr>
@@ -38,6 +39,13 @@
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger" onclick="return confirm('¿Estás seguro de que deseas eliminar esta categoría?')">Eliminar</button>
                         </form>
+                        <!-- Botón de Activar/Desactivar -->
+                        <form action="{{ route('categorias.toggleStatus', $categoria['id']) }}" method="POST">
+                            @csrf
+                            <button type="submit" class="btn btn-secondary mt-1">
+                                {{ $categoria['status'] ? 'Desactivar' : 'Activar' }}
+                            </button>
+                        </form>
                     </td>
                     @endif
                 </tr>
@@ -58,6 +66,9 @@
                 @endforeach
             </tbody>
         </table>
+        @else
+        <p>No hay categorías disponibles.</p>
+        @endif
     </div>
     <!-- Formulario para agregar una nueva categoría -->
     <div id="categoryForm" style="display: none; justify-content: center;">
