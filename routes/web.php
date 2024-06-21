@@ -23,13 +23,20 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::resource('/productos', ProductoController::class);
-    Route::resource('/proveedors', ProveedorController::class);
-    Route::resource('/categorias', CategoriaController::class);
-    Route::resource('/ventas', VentaController::class);
-    Route::resource('/compras', CompraController::class);
+    // Route::resource('/productos', ProductoController::class);
+    // Route::resource('/proveedors', ProveedorController::class);
+    // Route::resource('/categorias', CategoriaController::class);
+    // Route::resource('/ventas', VentaController::class);
+    // Route::resource('/compras', CompraController::class);
+    
 });
 
 require __DIR__.'/auth.php';
 
-Route::get('admin/dashboard',[HomeController::class,'index'])->middleware(['auth','admin']);
+Route::middleware(['auth','admin'])->group(function (){
+Route::get('admin/dashboard',[HomeController::class,'index'])->middleware(['auth','admin']);});
+Route::resource('admin/productos', ProductoController::class);
+    Route::resource('admin/proveedors', ProveedorController::class);
+    Route::resource('admin/categorias', CategoriaController::class);
+    Route::resource('admin/ventas', VentaController::class);
+    Route::resource('admin/compras', CompraController::class);

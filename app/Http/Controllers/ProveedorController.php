@@ -11,29 +11,25 @@ use Illuminate\Support\Facades\Validator;
 class ProveedorController extends Controller
 {
     public function index()
-    {
-        // Obtener el usuario autenticado
-        $user = Auth::user();
-        
-        // Obtener proveedores de la API
-        $response = Http::get("http://localhost/ApiRestProjet/ApiRestSgi/public/api/Proveedors");
-        
-        // Manejar la respuesta de la API
-        if ($response->successful()) {
-            // Filtrar proveedores por el user_id del usuario autenticado
-            $proveedores = collect($response->json())->filter(function ($proveedor) use ($user) {
-                return isset($proveedor['user_id']) && $proveedor['user_id'] == $user->id;
-            })->values()->all();
-        } else {
-            $proveedores = [];
-        }
-
-        if (empty($proveedores)) {
-            return view('proveedors.index', compact('proveedores'))->with('message', 'No hay proveedores disponibles.');
-        }
-
-        return view('proveedors.index', compact('proveedores'));
+{
+    // Obtener proveedores de la API
+    $response = Http::get("http://localhost/ApiRestProjet/ApiRestSgi/public/api/Proveedors");
+    
+    // Verificar si la respuesta es exitosa y es un array
+    if ($response->successful() && is_array($response->json())) {
+        $proveedores = $response->json();
+    } else {
+        $proveedores = [];
     }
+
+    // Verificar si no hay proveedores
+    if (empty($proveedores)) {
+        return view('proveedors.index')->with('message', 'No hay proveedores disponibles.');
+    }
+
+    return view('proveedors.index', compact('proveedores'));
+}
+
 
     public function store(Request $request)
     {

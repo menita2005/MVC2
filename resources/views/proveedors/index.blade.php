@@ -6,7 +6,11 @@
     <!-- Formulario para crear un nuevo proveedor -->
     <br><br>
     <h1 class="fs-1" style="text-align: center;">Lista de Proveedores</h1>
+
+    <!-- Botón para agregar proveedor, visible solo para admins -->
+    @if(auth()->user()->role === 'admin')
     <button class="btn btn-primary mb-4" onclick="document.getElementById('providerForm').style.display='flex'">Agregar Proveedor</button>
+    @endif
 
     <br><br>
     <div style="display: flex; justify-content: center;">
@@ -17,7 +21,9 @@
                 <th>correo</th>
                 <th>Teléfono</th>
                 <th>Dirección</th>
+                @if(auth()->user()->role === 'admin')
                 <th>Acciones</th>
+                @endif
             </tr>
             @foreach ($proveedores as $proveedor)
             <tr>
@@ -26,17 +32,23 @@
                 <td>{{ $proveedor['correo'] }}</td>
                 <td>{{ $proveedor['telefono'] }}</td>
                 <td>{{ $proveedor['direccion'] }}</td>
+                @if(auth()->user()->role === 'admin')
                 <td>
                     <!-- Botón de Editar -->
                     <button class="btn btn-primary" onclick="toggleEditForm({{ $proveedor['id'] }})">Editar</button>
-                    <!-- Formulario de Eliminar -->
+
+                    <!-- Formulario de Eliminar, visible solo para admins -->
+                    
                     <form action="{{ route('proveedors.destroy', $proveedor['id']) }}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger" onclick="return confirm('¿Estás seguro de que deseas eliminar este proveedor?')">Eliminar</button>
                     </form>
+                    
                 </td>
+                @endif
                 <!-- Formulario de Edición -->
+               
                 <tr id="editForm-{{ $proveedor['id'] }}" style="display: none;">
                     <td colspan="6">
                         <form action="{{ route('proveedors.update', $proveedor['id']) }}" method="POST">
