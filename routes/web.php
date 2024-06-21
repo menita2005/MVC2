@@ -34,8 +34,15 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-Route::middleware(['auth','admin'])->group(function (){
-Route::get('admin/dashboard',[HomeController::class,'index'])->middleware(['auth','admin']);});
+Route::middleware(['auth','admin'])->group(function () {
+    Route::get('admin/dashboard', [HomeController::class, 'index'])->name('admin.dashboard');
+    
+});
+Route::get('/admin/dashboard', function () {
+    return view('admin.dashboard');
+})->middleware(['auth', 'admin'])->name('admin.dashboard');
+
+
 Route::resource('admin/productos', ProductoController::class);
     Route::resource('admin/proveedors', ProveedorController::class);
     Route::resource('admin/categorias', CategoriaController::class);

@@ -26,5 +26,8 @@ class UserController extends Controller
 
         return redirect()->route('admin.users.index')->with('success', 'Estado del usuario actualizado exitosamente.');
     }
+    public function inicio(){
+        return view('admin.dashboard');
+    }
 }
 

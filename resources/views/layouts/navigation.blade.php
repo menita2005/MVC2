@@ -19,7 +19,7 @@
                     </x-nav-link>
                    
                     @if(auth()->user()->usertype === 'admin')
-                    <x-nav-link :href="route('admin.index')" :active="request()->routeIs('home')">
+                    <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('home')">
                         {{ __('Inicio Admin') }}
                     </x-nav-link>
                     @endif
