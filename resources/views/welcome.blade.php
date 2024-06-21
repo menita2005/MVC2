@@ -5,10 +5,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Wall Inventary</title>
-
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
+
+        <!-- Logo pestaña -->
+        <link rel="shortcut icon" href="{{ asset('Recursos/logoblanco.png') }}" type="image/png">
 
         <!-- Styles -->
         <style>
