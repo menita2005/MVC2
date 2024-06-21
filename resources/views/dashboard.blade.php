@@ -1,10 +1,8 @@
 <x-app-layout>
     <x-slot name="header">
-    <main class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-    <div class="bg-cover bg-center" style="background-image: url('{{ asset(('Recursos/fondoazul.jpg')) }}');">
-
+        <main class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-10" style="background-image: url('{{ asset('Recursos/fondoazul.jpg') }}'); height:100%; weight:100%;">
             <div class="bg-white overflow-hidden shadow sm:rounded-lg flex">
-                <div class="p-6 w-2/3">
+                <div class="p-6 w-2/3 bg-white bg-opacity-75">
                     <h4 class="text-2xl font-semibold text-gray-800 mb-4">Bienvenido a Wall Inventary</h4>
                     <p class="text-lg text-gray-700 leading-relaxed mb-4">
                         Nuestro sistema de inventario está diseñado para ayudarle a gestionar eficientemente sus productos y recursos. Con una interfaz amigable e intuitiva, podrá llevar un control detallado de todas sus compras/ventas.
