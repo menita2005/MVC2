@@ -40,13 +40,14 @@
                     <td>
                         <form action="{{ route('proveedors.toggleStatus', $proveedor['id']) }}" method="POST">
                             @csrf
-                            <button type="submit" class="btn btn-primary">
+                            <button type="submit" class="btn btn-primary mb-1" >
                                 {{ $proveedor['status'] ? 'Desactivar' : 'Activar' }}
                             </button>
+                            <br>
                         </form>
 
                         <!-- Botón de Editar -->
-                        <button class="btn btn-primary" onclick="toggleEditForm({{ $proveedor['id'] }})">
+                        <button class="btn btn-primary mb-1 " onclick="toggleEditForm({{ $proveedor['id'] }})">
                             Editar
                         </button>
 
