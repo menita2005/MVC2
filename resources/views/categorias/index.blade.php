@@ -32,7 +32,7 @@
                     @if(auth()->user()->usertype === 'admin')
                     <td>
                         <!-- Botón de Editar -->
-                        <button class="btn btn-primary" onclick="toggleEditForm({{ $categoria['id'] }})">Editar</button>
+                        <button class="btn btn-primary mb-1" onclick="toggleEditForm({{ $categoria['id'] }})">Editar</button>
                         <!-- Formulario de Eliminar -->
                         <form action="{{ route('categorias.destroy', $categoria['id']) }}" method="POST">
                             @csrf
