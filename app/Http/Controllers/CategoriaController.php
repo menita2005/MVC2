@@ -12,22 +12,48 @@ class CategoriaController extends Controller
 {
     public function index()
     {
+        // Verificar el tipo de usuario
+        $userType = auth()->user()->usertype;
+    
         // Obtener Categorias de la API
         $response = Http::get("http://localhost/ApiRestProjet/ApiRestSgi/public/api/Categoria");
-        
+    
         if ($response->successful()) {
             // Obtener todas las categorías desde la API
             $categorias = $response->json();
         } else {
             $categorias = [];
         }
-
-        if (empty($categorias)) {
-            return view('categorias.index', compact('categorias'))->with('message', 'No hay categorías disponibles.');
+    
+        // Filtrar categorías según el tipo de usuario
+        if ($userType === 'admin') {
+            // Mostrar todas las categorías para el administrador
+            $categorias = collect($categorias);
+        } else {
+            // Mostrar solo las categorías activas para otros usuarios
+            $categorias = collect($categorias)->where('status', true)->values();
         }
-
+    
+        if ($categorias->isEmpty()) {
+            return view('categorias.index')->with('message', 'No hay categorías disponibles.');
+        }
+    
         return view('categorias.index', compact('categorias'));
     }
+    public function toggleStatus($id)
+{
+    // Buscar el categoria por ID
+    $categoria = Categoria::findOrFail($id);
+
+    // Cambiar el estado (invertirlo)
+    $categoria->status = !$categoria->status;
+
+    // Guardar el categoria actualizado
+    $categoria->save();
+
+    // Redireccionar de vuelta a la lista de categoriaes con un mensaje de éxito
+    return redirect()->route('categorias.index')->with('success', 'Estado del categoria actualizado exitosamente.');
+}
 
     public function store(Request $request)
     {

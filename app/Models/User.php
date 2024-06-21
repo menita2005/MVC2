@@ -45,5 +45,9 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+    public function isActive()
+    {
+        return $this->status;
+    }
 
 }

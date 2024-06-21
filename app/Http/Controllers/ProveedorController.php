@@ -11,24 +11,48 @@ use Illuminate\Support\Facades\Validator;
 class ProveedorController extends Controller
 {
     public function index()
-{
-    // Obtener proveedores de la API
-    $response = Http::get("http://localhost/ApiRestProjet/ApiRestSgi/public/api/Proveedors");
+    {
+        // Obtener proveedores de la API
+        $response = Http::get("http://localhost/ApiRestProjet/ApiRestSgi/public/api/Proveedors");
+        
+        // Verificar si la respuesta es exitosa y es un array
+        if ($response->successful() && is_array($response->json())) {
+            $proveedores = $response->json();
+        } else {
+            $proveedores = [];
+        }
     
-    // Verificar si la respuesta es exitosa y es un array
-    if ($response->successful() && is_array($response->json())) {
-        $proveedores = $response->json();
-    } else {
-        $proveedores = [];
+        // Verificar si no hay proveedores
+        if (empty($proveedores)) {
+            return view('proveedors.index')->with('message', 'No hay proveedores disponibles.');
+        }
+    
+        // Si hay proveedores, verificar el tipo de usuario para filtrar los activos
+        if (auth()->user()->usertype === 'admin') {
+            // Si es admin, mostrar todos los proveedores
+            $proveedores = collect($proveedores); // Convertir a colección para poder usar métodos de colección
+        } else {
+            // Si no es admin, filtrar solo los proveedores activos
+            $proveedores = collect($proveedores)->where('status', true);
+        }
+    
+        return view('proveedors.index', compact('proveedores'));
     }
+public function toggleStatus($id)
+{
+    // Buscar el proveedor por ID
+    $proveedor = Proveedor::findOrFail($id);
 
-    // Verificar si no hay proveedores
-    if (empty($proveedores)) {
-        return view('proveedors.index')->with('message', 'No hay proveedores disponibles.');
-    }
+    // Cambiar el estado (invertirlo)
+    $proveedor->status = !$proveedor->status;
 
-    return view('proveedors.index', compact('proveedores'));
+    // Guardar el proveedor actualizado
+    $proveedor->save();
+
+    // Redireccionar de vuelta a la lista de proveedores con un mensaje de éxito
+    return redirect()->route('proveedors.index')->with('success', 'Estado del proveedor actualizado exitosamente.');
 }
+
 
 
     public function store(Request $request)

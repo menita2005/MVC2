@@ -13,9 +13,16 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Inicio') }}
                     </x-nav-link>
+                   
+                    @if(auth()->user()->usertype === 'admin')
+                    <x-nav-link :href="route('admin.index')" :active="request()->routeIs('home')">
+                        {{ __('Inicio Admin') }}
+                    </x-nav-link>
+                    @endif
                     <x-nav-link :href="route('productos.index')" :active="request()->routeIs('productos')">
                         {{ __('Productos') }}
                     </x-nav-link>
@@ -31,6 +38,11 @@
                     <x-nav-link :href="route('compras.index')" :active="request()->routeIs('compras')">
                         {{ __('Compras') }}
                     </x-nav-link>
+                    @if(auth()->user()->usertype === 'admin')
+                    <x-nav-link :href="route('admin.users.index')" :active="request()->routeIs('compras')">
+                        {{ __('Usuarios') }}
+                    </x-nav-link>
+                    @endif
                 </div>
             </div>
 

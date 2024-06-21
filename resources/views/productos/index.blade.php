@@ -20,9 +20,9 @@
             {{ session('error') }}
         </div>
     @endif
-
+<br><br>
     <h1 class="fs-1 text-center">Lista de Productos</h1>
-    
+    <br><br>
     <!-- Mostrar botón de agregar producto solo para administradores -->
     @if(auth()->user()->usertype === 'admin')
         <button class="btn btn-primary mb-4" onclick="toggleForm('productForm')">Agregar Producto</button>

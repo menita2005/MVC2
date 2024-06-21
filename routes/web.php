@@ -7,6 +7,7 @@ use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 
@@ -40,3 +41,7 @@ Route::resource('admin/productos', ProductoController::class);
     Route::resource('admin/categorias', CategoriaController::class);
     Route::resource('admin/ventas', VentaController::class);
     Route::resource('admin/compras', CompraController::class);
+    Route::get('/admin/users', [UserController::class, 'index'])->name('admin.users.index');
+    Route::post('/admin/users/{id}/toggle', [UserController::class, 'toggleStatus'])->name('admin.users.toggleStatus');
+    Route::post('/admin/proveedors/{id}/toggle', [ProveedorController::class, 'toggleStatus'])->name('proveedors.toggleStatus');
+    Route::post('/admin/categorias/{id}/toggle', [CategoriaController::class, 'toggleStatus'])->name('categorias.toggleStatus');
