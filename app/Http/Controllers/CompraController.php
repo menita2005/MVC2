@@ -17,13 +17,13 @@ class CompraController extends Controller
         $user = Auth::user();
 
         // Obtener las compras del usuario autenticado
-        $compras = Compra::where('user_id', $user->id)->get();
+        $compras = Compra::all();
 
         // Obtener los proveedores del usuario autenticado
-        $proveedores = Proveedor::where('user_id', $user->id)->get();
+        $proveedores = Proveedor::all();
 
         // Obtener los productos del usuario autenticado
-        $productos = Producto::where('user_id', $user->id)->get();
+        $productos = Producto::all();
 
         // Verificar si hay compras disponibles
         if ($compras->isEmpty()) {

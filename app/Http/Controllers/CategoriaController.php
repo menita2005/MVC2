@@ -12,17 +12,12 @@ class CategoriaController extends Controller
 {
     public function index()
     {
-        // Obtener el usuario autenticado
-        $user = Auth::user();
-        
         // Obtener Categorias de la API
         $response = Http::get("http://localhost/ApiRestProjet/ApiRestSgi/public/api/Categoria");
         
         if ($response->successful()) {
-            // Filtrar Categorias por el user_id del usuario autenticado
-            $categorias = collect($response->json())->filter(function ($categoria) use ($user) {
-                return isset($categoria['user_id']) && $categoria['user_id'] == $user->id;
-            })->values()->all();
+            // Obtener todas las categorías desde la API
+            $categorias = $response->json();
         } else {
             $categorias = [];
         }
