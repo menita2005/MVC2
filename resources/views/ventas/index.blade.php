@@ -49,6 +49,7 @@
                     <th>Producto</th>
                     <th>Cantidad</th>
                     <th>Valor Venta</th>
+                    <th>Fecha Venta</th>
                     @if(auth()->check())
                     @if(auth()->user()->usertype === 'admin')
                     <th>Acciones</th>
@@ -63,6 +64,7 @@
                     <td>{{ $venta->producto->NombreP }}</td>
                     <td>{{ $venta->c_compra }}</td>
                     <td>{{ $venta->v_venta }}</td>
+                    <td>{{ $venta->f_venta }}</td>
                     @if(auth()->check())
                     
                         @if(auth()->user()->usertype === 'admin')

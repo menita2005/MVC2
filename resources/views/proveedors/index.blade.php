@@ -11,7 +11,8 @@
         Agregar Proveedor
     </button>
     @endif
-
+    
+    @if(!empty($proveedores) && count($proveedores) > 0)
     <br><br>
     <div style="display: flex; justify-content: center;">
         <table class="table table-bordered" style="border-collapse: collapse; width: 100%;">
@@ -90,6 +91,11 @@
             </tbody>
         </table>
     </div>
+    @else
+    <div style="text-align: center; margin-top: 50px;">
+        <h2>No hay proveedores disponibles.</h2>
+    </div>
+    @endif
     
     <!-- Formulario para agregar un nuevo proveedor -->
     <div id="providerForm" style="display: none; justify-content: center;">

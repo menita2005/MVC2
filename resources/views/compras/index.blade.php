@@ -79,6 +79,7 @@
                         <th>Proveedor</th>
                         <th>Producto</th>
                         <th>Cantidad de Compra</th>
+                        <th>Valor de la Compra</th>
                         <th>Fecha de Compra</th>
                         <th>Acciones</th>
                     </tr>
@@ -90,6 +91,7 @@
                             <td>{{ $compra['proveedor']['nombre'] }}</td>
                             <td>{{ $compra['producto']['NombreP'] }}</td>
                             <td>{{ $compra['c_compra'] }}</td>
+                            <td>{{$compra['v_compra']}}</td>
                             <td>{{ $compra['f_compra'] }}</td>
                             <td>
                                 <a href="{{ route('compras.edit', $compra['id']) }}" class="btn btn-primary">Editar</a>

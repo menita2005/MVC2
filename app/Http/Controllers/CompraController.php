@@ -71,7 +71,7 @@ class CompraController extends Controller
         }
 
         // Calcular el valor de la compra
-        $valorCompra = $producto->precio * $request->c_compra;
+        $valorCompra = $producto->Precio * $request->c_compra;
 
         // Crear la nueva compra usando los datos validados
         $compra = Compra::create([

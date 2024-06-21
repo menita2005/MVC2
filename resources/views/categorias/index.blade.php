@@ -7,7 +7,7 @@
     <h1 class="fs-1" style="text-align: center;">Lista de Categorías</h1>
 
     <!-- Botón para agregar categoría, visible solo para admins -->
-    @if(auth()->user()->role === 'admin')
+    @if(auth()->user()->usertype === 'admin')
     <button class="btn btn-primary mb-4" style="display: flex; justify-content: center;" onclick="document.getElementById('categoryForm').style.display='flex'">Agregar Categoría</button>
     @endif
 
