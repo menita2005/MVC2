@@ -20,7 +20,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'usertype'
+        'usertype',
+        'password_app'
     ];
 
     /**
@@ -47,6 +48,7 @@ class User extends Authenticatable
     }
     public function isActive()
     {
+        
         return $this->status;
     }
 
