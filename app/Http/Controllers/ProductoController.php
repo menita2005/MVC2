@@ -32,6 +32,12 @@ class ProductoController extends Controller
 
         return view('productos.index', compact('productos', 'categorias', 'proveedores'));
     }
+    public function create()
+{
+    $categorias = Http::get("http://localhost/ApiRestProjet/ApiRestSgi/public/api/Categoria")->json();
+    $proveedores = Http::get("http://localhost/ApiRestProjet/ApiRestSgi/public/api/Proveedors")->json();
+    return view('productos.create', compact('categorias', 'proveedores'));
+}
     
 
 

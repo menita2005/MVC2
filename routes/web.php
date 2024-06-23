@@ -44,6 +44,7 @@ Route::get('/admin/dashboard', function () {
 
 
 Route::resource('admin/productos', ProductoController::class);
+Route::get('admin/productos/create', [ProductoController::class, 'create'])->name('productos.create');
     Route::resource('admin/proveedors', ProveedorController::class);
     Route::resource('admin/categorias', CategoriaController::class);
     Route::resource('admin/ventas', VentaController::class);
