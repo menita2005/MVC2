@@ -2,6 +2,8 @@
 
 @section('content')
 <div class="container">
+@include('layouts.navigationadmin')
+
     <br><br>
     <h1 class="fs-1" style="text-align: center;">Gestionar Usuarios</h1>
     <br><br>
