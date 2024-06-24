@@ -41,6 +41,9 @@ Route::middleware(['auth','admin'])->group(function () {
 Route::get('/admin/dashboard', function () {
     return view('admin.dashboard');
 })->middleware(['auth', 'admin'])->name('admin.dashboard');
+Route::get('/admin/tutorial', function () {
+    return view('tutorial');
+})->middleware(['auth', 'admin'])->name('admin.tutorial');
 
 
 Route::resource('admin/productos', ProductoController::class);
