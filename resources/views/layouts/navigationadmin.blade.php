@@ -6,8 +6,7 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('admin.dashboard') }}">
-                        <img src="{{ ('Recursos/logonegro.png') }}" alt="Logo" class="block h-9 w-auto fill-current text-gray-800" />
-                    </a>
+                    <img src="{{ asset('Recursos/logonegro.png') }}" alt="Logo" class="block h-9 w-auto fill-current text-gray-800" />                    </a>
                 </div>
 
                 <!-- Navigation Links -->
