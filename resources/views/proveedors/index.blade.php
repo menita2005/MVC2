@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container min-h-screen bg-blue-500">
+
     <br><br>
     <h1 class="fs-1" style="text-align: center;">Lista de Proveedores</h1>
 
@@ -15,6 +16,7 @@
     @if(!empty($proveedores) && count($proveedores) > 0)
     <br><br>
     <div style="display: flex; justify-content: center;">
+        <div class="table-responsive">
         <table class="table table-bordered" style="border-collapse: collapse; width: 100%;">
             <thead>
                 <tr>
@@ -97,9 +99,11 @@
         <h2>No hay proveedores disponibles.</h2>
     </div>
     @endif
-    
+    </div>
+    <div class="card">
     <!-- Formulario para agregar un nuevo proveedor -->
     <div id="providerForm" style="display: none; justify-content: center;">
+        <div class="card-body">
         <form action="{{ route('proveedors.store') }}" method="POST" class="mt-4">
             @csrf
             <div class="form-group">
@@ -118,8 +122,10 @@
                 <label for="direccion">Dirección</label>
                 <input type="text" class="form-control" id="direccion" name="direccion" required>
             </div>
+            <br>
             <button type="submit" class="btn btn-success">Guardar Proveedor</button>
         </form>
+    </div>
     </div>
 </div>
 

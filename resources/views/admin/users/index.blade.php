@@ -3,6 +3,7 @@
 @section('content')
 <div class="w-full p-4 pt-6 md:p-6 lg:p-12 bg-white rounded shadow-md">
 <h1 class="text-5xl font-bold text-[#ffc600] text-center mb-4">Gestionar Usuarios</h1>
+<div class="table-responsive">
     <table class="table-auto w-full mb-4">
      <thead>
     <tr>

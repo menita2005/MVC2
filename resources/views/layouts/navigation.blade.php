@@ -92,6 +92,33 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                {{ __('Inicio') }}
+            </x-responsive-nav-link>
+        
+            <x-responsive-nav-link :href="route('tutorial')" :active="request()->routeIs('tutorial')">
+                {{ __('Tutorial') }}
+            </x-responsive-nav-link>
+        
+            <x-responsive-nav-link :href="route('productos.index')" :active="request()->routeIs('productos.index')">
+                {{ __('Productos') }}
+            </x-responsive-nav-link>
+        
+            <x-responsive-nav-link :href="route('proveedors.index')" :active="request()->routeIs('proveedors.index')">
+                {{ __('Proveedores') }}
+            </x-responsive-nav-link>
+        
+            <x-responsive-nav-link :href="route('categorias.index')" :active="request()->routeIs('categorias.index')">
+                {{ __('Categorías') }}
+            </x-responsive-nav-link>
+        
+            <x-responsive-nav-link :href="route('ventas.index')" :active="request()->routeIs('ventas.index')">
+                {{ __('Ventas') }}
+            </x-responsive-nav-link>
+        
+            <x-responsive-nav-link :href="route('compras.index')" :active="request()->routeIs('compras.index')">
+                {{ __('Compras') }}
+            </x-responsive-nav-link>
         </div>
 
         <!-- Responsive Settings Options -->

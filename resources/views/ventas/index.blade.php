@@ -42,6 +42,7 @@
     </div>
     <br><br>
     <div style="display: flex; justify-content: center;">
+        <div class="table-responsive">
         <table class="table table-bordered" style="border-collapse: collapse; width: 100%;">
             <thead>
                 <tr>
