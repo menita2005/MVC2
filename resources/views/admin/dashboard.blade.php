@@ -1,5 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
+    @include('layouts.navigationadmin')
         <main class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8" style="background-image: url('{{ asset('Recursos/fondodorado.jpg') }}'); background-size: cover; background-position: center;">
             <div class="bg-white overflow-hidden shadow sm:rounded-lg flex">
                 <div class="p-6 w-2/3 bg-white bg-opacity-75">
@@ -21,5 +22,5 @@
                 </div>
             </div>
         </main>
-    </x-slot>
-</x-app-layout>
+        </x-slot>
+    </x-app-layout>

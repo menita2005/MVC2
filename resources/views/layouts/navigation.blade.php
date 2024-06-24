@@ -18,11 +18,6 @@
                         {{ __('Inicio') }}
                     </x-nav-link>
                    
-                    @if(auth()->user()->usertype === 'admin')
-                    <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('home')">
-                        {{ __('Inicio Admin') }}
-                    </x-nav-link>
-                    @endif
                     <x-nav-link :href="route('productos.index')" :active="request()->routeIs('productos')">
                         {{ __('Productos') }}
                     </x-nav-link>
@@ -38,11 +33,7 @@
                     <x-nav-link :href="route('compras.index')" :active="request()->routeIs('compras')">
                         {{ __('Compras') }}
                     </x-nav-link>
-                    @if(auth()->user()->usertype === 'admin')
-                    <x-nav-link :href="route('admin.users.index')" :active="request()->routeIs('compras')">
-                        {{ __('Usuarios') }}
-                    </x-nav-link>
-                    @endif
+
                 </div>
             </div>
 
@@ -126,3 +117,4 @@
         </div>
     </div>
 </nav>
+
