@@ -14,21 +14,25 @@
     <br><br>
     <div style="display: flex; justify-content: center;">
         @if(!empty($categorias))
-        <table class="table table-bordered" style="border-collapse: collapse; width: 100%;">
+        <table class="table table-bordered" style="border-collapse: collapse; width: 50%;">
             <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nombre</th>
+                <tr>@if(auth()->user()->usertype === 'admin')
+                    <th  style="background-color: #73e6c48f; color: #000000; padding: 10px;">ID</th>
+                    @endif
+                    <th style="background-color: #73e6c48f; color: #000000; padding: 10px; text-align: center;">Nombre</th>
+
                     @if(auth()->user()->usertype === 'admin')
-                    <th>Acciones</th>
+                    <th style="background-color: #73e6c48f; color: #000000; padding: 10px;">Acciones</th>
                     @endif
                 </tr>
             </thead>
             <tbody>
                 @foreach ($categorias as $categoria)
                 <tr>
+                    @if(auth()->user()->usertype === 'admin')
                     <td>{{ $categoria['id'] }}</td>
-                    <td>{{ $categoria['Nombre'] }}</td>
+                    @endif
+                    <td style="display: flex; justify-content: center;">{{ $categoria['Nombre'] }}</td>
                     @if(auth()->user()->usertype === 'admin')
                     <td>
                         <!-- Botón de Editar -->

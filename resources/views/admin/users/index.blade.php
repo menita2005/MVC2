@@ -6,24 +6,24 @@
     <table class="table-auto w-full mb-4">
      <thead>
     <tr>
-        <th style="background-color: #efb810; color: #FFFFFF; padding: 10px;">ID</th>
-        <th style="background-color: #efb810; color: #FFFFFF; padding: 10px;">Nombre</th>
-        <th style="background-color: #efb810; color: #FFFFFF; padding: 10px;">Email</th>
-        <th style="background-color: #efb810; color: #FFFFFF; padding: 10px;">Estado</th>
-        <th style="background-color: #efb810; color: #FFFFFF; padding: 10px;">Acciones</th>
+        <th style="background-color: #efb810; color: #FFFFFF; padding: 10px; text-align: center;">ID</th>
+        <th style="background-color: #efb810; color: #FFFFFF; padding: 10px; text-align: center;">Nombre</th>
+        <th style="background-color: #efb810; color: #FFFFFF; padding: 10px; text-align: center;">Email</th>
+        <th style="background-color: #efb810; color: #FFFFFF; padding: 10px; text-align: center;">Estado</th>
+        <th style="background-color: #efb810; color: #FFFFFF; padding: 10px; text-align: center;">Acciones</th>
     </tr>
 </thead>
         <tbody>
             @foreach ($users as $user)
             <tr>
-                <td class="px-4 py-2">{{ $user->id }}</td>
-                <td class="px-4 py-2">{{ $user->name }}</td>
-                <td class="px-4 py-2">{{ $user->email }}</td>
-                <td class="px-4 py-2">{{ $user->status? 'Activo' : 'Inactivo' }}</td>
-                <td class="px-4 py-2">
+                <td class="px-4 py-2" style="background-color: #efb71045; color: #000; padding: 10px; text-align: center;">{{ $user->id }}</td>
+                <td class="px-4 py-2"  style="background-color: #efb71045; color: #000; padding: 10px; text-align: center;">{{ $user->name }}</td>
+                <td class="px-4 py-2"  style="background-color: #efb71045; color: #000; padding: 10px; text-align: center;">{{ $user->email }}</td>
+                <td class="px-4 py-2"  style="background-color: #efb71045; color: #000; padding: 10px; text-align: center;">{{ $user->status? 'Activo' : 'Inactivo' }}</td>
+                <td class="px-4 py-2"  style="background-color: #efb71045; color: #000; padding: 10px; text-align: center;">
                     <form action="{{ route('admin.users.toggleStatus', $user->id) }}" method="POST">
                         @csrf
-                        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                        <button type="submit" class="btn btn-primary mb-1" class="bg-blue-500 hover:bg-blue-700 font-bold py-2 px-4 rounded" >
                             {{ $user->status? 'Desactivar' : 'Activar' }}
                         </button>
                     </form>

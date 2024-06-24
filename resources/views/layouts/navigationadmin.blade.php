@@ -14,26 +14,26 @@
                     <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
                         {{ __('Inicio Admin') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('admin.users.index')" :active="request()->routeIs('admin.users')">
+                    <x-nav-link :href="route('admin.users.index')" :active="request()->routeIs('admin.users.index')">
                         {{ __('Usuarios') }}
                     </x-nav-link>
                     <x-nav-link :href="route('admin.tutorial')" :active="request()->routeIs('home')">
                         {{ __('Tutorial ') }}
                     </x-nav-link>
                    
-                    <x-nav-link :href="route('productos.index')" :active="request()->routeIs('productos')">
+                    <x-nav-link :href="route('productos.index')" :active="request()->routeIs('productos.index')">
                         {{ __('Productos') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('proveedors.index')" :active="request()->routeIs('proveedors')">
+                    <x-nav-link :href="route('proveedors.index')" :active="request()->routeIs('proveedors.index')">
                         {{ __('Proveedores') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('categorias.index')" :active="request()->routeIs('categoriaas')">
+                    <x-nav-link :href="route('categorias.index')" :active="request()->routeIs('categorias.index')">
                         {{ __('Categorias') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('ventas.index')" :active="request()->routeIs('productos')">
+                    <x-nav-link :href="route('ventas.index')" :active="request()->routeIs('ventas.index')">
                         {{ __('Ventas') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('compras.index')" :active="request()->routeIs('compras')">
+                    <x-nav-link :href="route('compras.index')" :active="request()->routeIs('compras.index')">
                         {{ __('Compras') }}
                     </x-nav-link>
                 </div>

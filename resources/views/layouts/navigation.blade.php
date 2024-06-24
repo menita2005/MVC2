@@ -17,23 +17,23 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Inicio') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('admin.tutorial')" :active="request()->routeIs('home')">
+                    <x-nav-link :href="route('tutorial')" :active="request()->routeIs('tutorial')">
                         {{ __('Tutorial ') }}
                     </x-nav-link>
                    
-                    <x-nav-link :href="route('productos.index')" :active="request()->routeIs('productos')">
+                    <x-nav-link :href="route('productos.index')" :active="request()->routeIs('productos.index')">
                         {{ __('Productos') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('proveedors.index')" :active="request()->routeIs('proveedors')">
+                    <x-nav-link :href="route('proveedors.index')" :active="request()->routeIs('proveedors.index')">
                         {{ __('Proveedores') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('categorias.index')" :active="request()->routeIs('categoriaas')">
+                    <x-nav-link :href="route('categorias.index')" :active="request()->routeIs('categorias.index')">
                         {{ __('Categorias') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('ventas.index')" :active="request()->routeIs('productos')">
+                    <x-nav-link :href="route('ventas.index')" :active="request()->routeIs('ventas.index')">
                         {{ __('Ventas') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('compras.index')" :active="request()->routeIs('compras')">
+                    <x-nav-link :href="route('compras.index')" :active="request()->routeIs('compras.index')">
                         {{ __('Compras') }}
                     </x-nav-link>
 
