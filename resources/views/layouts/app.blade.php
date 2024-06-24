@@ -19,7 +19,15 @@
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-blue-500">
-            @include('layouts.navigation')
+            @if (Auth::check())
+            @if (Auth::user()->usertype == 'Encargado')
+                @include('layouts.navigation')
+            @elseif (Auth::user()->usertype == 'admin')
+                @include('layouts.navigationadmin')
+            @endif
+        @else
+            <!-- Opciones de navegación para invitados si es necesario -->
+        @endif
 
             
 

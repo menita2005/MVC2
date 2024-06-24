@@ -12,10 +12,29 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
-                        {{ __('Inicio') }}
+                        {{ __('Inicio Admin') }}
                     </x-nav-link>
                     <x-nav-link :href="route('admin.users.index')" :active="request()->routeIs('admin.users')">
                         {{ __('Usuarios') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('admin.tutorial')" :active="request()->routeIs('home')">
+                        {{ __('Tutorial ') }}
+                    </x-nav-link>
+                   
+                    <x-nav-link :href="route('productos.index')" :active="request()->routeIs('productos')">
+                        {{ __('Productos') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('proveedors.index')" :active="request()->routeIs('proveedors')">
+                        {{ __('Proveedores') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('categorias.index')" :active="request()->routeIs('categoriaas')">
+                        {{ __('Categorias') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('ventas.index')" :active="request()->routeIs('productos')">
+                        {{ __('Ventas') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('compras.index')" :active="request()->routeIs('compras')">
+                        {{ __('Compras') }}
                     </x-nav-link>
                 </div>
             </div>
