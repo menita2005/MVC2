@@ -46,13 +46,13 @@ Route::get('/admin/tutorial', function () {
 })->middleware(['auth', 'admin'])->name('admin.tutorial');
 
 
-Route::resource('admin/productos', ProductoController::class);
+Route::resource('/productos', ProductoController::class);
 Route::get('admin/productos/create', [ProductoController::class, 'create'])->name('productos.create');
-    Route::resource('admin/proveedors', ProveedorController::class);
-    Route::resource('admin/categorias', CategoriaController::class);
-    Route::resource('admin/ventas', VentaController::class);
-    Route::resource('admin/compras', CompraController::class);
+    Route::resource('/proveedors', ProveedorController::class);
+    Route::resource('/categorias', CategoriaController::class);
+    Route::resource('/ventas', VentaController::class);
+    Route::resource('/compras', CompraController::class);
     Route::get('/admin/users', [UserController::class, 'index'])->name('admin.users.index');
     Route::post('/admin/users/{id}/toggle', [UserController::class, 'toggleStatus'])->name('admin.users.toggleStatus');
-    Route::post('/admin/proveedors/{id}/toggle', [ProveedorController::class, 'toggleStatus'])->name('proveedors.toggleStatus');
-    Route::post('/admin/categorias/{id}/toggle', [CategoriaController::class, 'toggleStatus'])->name('categorias.toggleStatus');
+    Route::post('/proveedors/{id}/toggle', [ProveedorController::class, 'toggleStatus'])->name('proveedors.toggleStatus');
+    Route::post('/categorias/{id}/toggle', [CategoriaController::class, 'toggleStatus'])->name('categorias.toggleStatus');
