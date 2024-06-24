@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        <title>Dashboard Admin - {{ config('app.name', 'Laravel') }}</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -15,13 +15,11 @@
         <link rel="shortcut icon" href="{{ asset('Recursos/logoblanco.png') }}" type="image/png">
 
         <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @vite(['resources/css/app.css', 'esources/js/app.js'])
     </head>
     <body class="font-sans antialiased">
-        <div class="min-h-screen bg-blue-500">
-            @include('layouts.navigation')
-
-            
+        <div class="min-h-screen bg-gray-100">
+            @include('layouts.navigationadmin')
 
             <!-- Page Heading -->
             @isset($header)
@@ -34,7 +32,6 @@
 
             <!-- Page Content -->
             <main>
-               
                 @yield('content')
             </main>
         </div>
