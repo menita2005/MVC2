@@ -1,0 +1,31 @@
+/* Estilo para el botón "Agregar Producto" */
+.btn-amber {
+    background-color: #ffd700; /* Color amarillo dorado */
+    color: #ffffff; /* Color de texto blanco */
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  /* Estilo para el botón "Editar" */
+  .btn-amber:hover {
+    background-color: #ffc107; /* Color amarillo dorado más oscuro */
+  }
+  
+  /* Estilo para la tabla */
+  .table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  .table th, .table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .table th {
+    background-color: #f0f0f0; /* Color gris claro */
+  }
