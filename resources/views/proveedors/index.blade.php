@@ -80,7 +80,7 @@
                     <input type="text" class="form-control w-full p-2 pl-10 text-sm text-gray-700" id="direccion-{{ $proveedor['id'] }}" name="direccion" value="{{ $proveedor['direccion'] }}" required>
                 </div>
                 <div class="text-center">
-     <button type="submit" class="btn btn-primary mb-4 class="btn btn-primary mb-4 text-center" style="background-color: #ffc600; color: #FFFFFF;">Actualizar Proveedor</button>
+     <button type="submit" class="btn btn-primary mb-4" class="btn btn-primary mb-4 text-center" style="background-color: #ffc600; color: #FFFFFF;">Actualizar Proveedor</button>
 </div>            </form>
         </div>
     </td>
@@ -129,7 +129,7 @@
             </div>
             <br>
             <div class="text-center">
-     <button type="submit" class="btn btn-primary mb-4 class="btn btn-primary mb-4 text-center" style="background-color: #ffc600; color: #FFFFFF;">Guardar Proveedor</button>
+     <button type="submit" class="btn btn-primary mb-4" class="btn btn-primary mb-4 text-center" style="background-color: #ffc600; color: #FFFFFF;">Guardar Proveedor</button>
 </div>
         </form>
     </div>
