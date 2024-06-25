@@ -1,49 +1,40 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container min-h-screen bg-blue-500">
-
+<div class="w-full p-4 pt-6 md:p-6 lg:p-12 bg-white rounded shadow-md">
     <br><br>
-    <h1 class="fs-1" style="text-align: center;">Lista de Proveedores</h1>
+    <h1 class="fs-1 text-5xl font-bold text-[#ffc600] text-center mb-4">Lista de Proveedores</h1>
 
-    <!-- Botón para agregar proveedor, visible solo para admins -->
-    @if(auth()->user()->usertype === 'admin')
-    <button class="btn btn-primary mb-4" onclick="document.getElementById('providerForm').style.display='flex'">
-        Agregar Proveedor
-    </button>
-    @endif
-    
     @if(!empty($proveedores) && count($proveedores) > 0)
     <br><br>
-    <div style="display: flex; justify-content: center;">
-        <div class="table-responsive">
-        <table class="table table-bordered" style="border-collapse: collapse; width: 100%;">
+    <div class="table-responsive">
+        <table class="table-auto w-full mb-4">
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Nombre</th>
-                    <th>Correo</th>
-                    <th>Teléfono</th>
-                    <th>Dirección</th>
+                    <th style="background-color: #efb810; color: #FFFFFF; padding: 10px; text-align: center;">ID</th>
+                    <th style="background-color: #efb810; color: #FFFFFF; padding: 10px; text-align: center;">Nombre</th>
+                    <th style="background-color: #efb810; color: #FFFFFF; padding: 10px; text-align: center;">Correo</th>
+                    <th style="background-color: #efb810; color: #FFFFFF; padding: 10px; text-align: center;">Teléfono</th>
+                    <th style="background-color: #efb810; color: #FFFFFF; padding: 10px; text-align: center;">Dirección</th>
                     @if(auth()->user()->usertype === 'admin')
-                    <th>Acciones</th>
+                    <th style="background-color: #efb810; color: #FFFFFF; padding: 10px; text-align: center;">Acciones</th>
                     @endif
                 </tr>
             </thead>
             <tbody>
                 @foreach ($proveedores as $proveedor)
                 <tr>
-                    <td>{{ $proveedor['id'] }}</td>
-                    <td>{{ $proveedor['nombre'] }}</td>
-                    <td>{{ $proveedor['correo'] }}</td>
-                    <td>{{ $proveedor['telefono'] }}</td>
-                    <td>{{ $proveedor['direccion'] }}</td>
+                    <td class="px-4 py-2" style="background-color: #efb71045; color: #000; padding: 10px; text-align: center;">{{ $proveedor['id'] }}</td>
+                    <td class="px-4 py-2" style="background-color: #efb71045; color: #000; padding: 10px; text-align: center;">{{ $proveedor['nombre'] }}</td>
+                    <td class="px-4 py-2" style="background-color: #efb71045; color: #000; padding: 10px; text-align: center;">{{ $proveedor['correo'] }}</td>
+                    <td class="px-4 py-2" style="background-color: #efb71045; color: #000; padding: 10px; text-align: center;">{{ $proveedor['telefono'] }}</td>
+                    <td class="px-4 py-2" style="background-color: #efb71045; color: #000; padding: 10px; text-align: center;">{{ $proveedor['direccion'] }}</td>
                     @if(auth()->user()->usertype === 'admin')
-                    <td>
+                    <td class="px-4 py-2" style="background-color: #efb71045; color: #000; padding: 10px; text-align: center;">
                         <form action="{{ route('proveedors.toggleStatus', $proveedor['id']) }}" method="POST">
                             @csrf
-                            <button type="submit" class="btn btn-primary mb-1" >
-                                {{ $proveedor['status'] ? 'Desactivar' : 'Activar' }}
+                            <button type="submit" class="btn btn-primary mb-1" class="bg-blue-500 hover:bg-blue-700 font-bold py-2 px-4 rounded" >
+                                {{ $proveedor['status']? 'Desactivar' : 'Activar' }}
                             </button>
                             <br>
                         </form>
@@ -66,30 +57,34 @@
                 </tr>
                 <!-- Formulario de Edición -->
                 <tr id="editForm-{{ $proveedor['id'] }}" style="display: none;">
-                    <td colspan="6">
-                        <form action="{{ route('proveedors.update', $proveedor['id']) }}" method="POST">
-                            @csrf
-                            @method('PUT')
-                            <div class="form-group">
-                                <label for="nombre-{{ $proveedor['id'] }}">Nombre del Proveedor</label>
-                                <input type="text" class="form-control" id="nombre-{{ $proveedor['id'] }}" name="nombre" value="{{ $proveedor['nombre'] }}" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="correo-{{ $proveedor['id'] }}">Correo</label>
-                                <input type="text" class="form-control" id="correo-{{ $proveedor['id'] }}" name="correo" value="{{ $proveedor['correo'] }}" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="telefono-{{ $proveedor['id'] }}">Teléfono</label>
-                                <input type="text" class="form-control" id="telefono-{{ $proveedor['id'] }}" name="telefono" value="{{ $proveedor['telefono'] }}" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="direccion-{{ $proveedor['id'] }}">Dirección</label>
-                                <input type="text" class="form-control" id="direccion-{{ $proveedor['id'] }}" name="direccion" value="{{ $proveedor['direccion'] }}" required>
-                            </div>
-                            <button type="submit" class="btn btn-success mt-3">Actualizar Proveedor</button>
-                        </form>
-                    </td>
-                </tr>
+    <td colspan="6">
+        <div class="w-full p-4 pt-6 md:p-6 lg:p-12 bg-white rounded shadow-md">
+            <h1 class="text-5xl font-bold text-[#ffc600] text-center mb-4">Editar Proveedor</h1>
+            <form action="{{ route('proveedors.update', $proveedor['id']) }}" method="POST">
+                @csrf
+                @method('PUT')
+                <div class="form-group">
+                    <label for="nombre-{{ $proveedor['id'] }}" class="text-lg font-bold">Nombre del Proveedor</label>
+                    <input type="text" class="form-control w-full p-2 pl-10 text-sm text-gray-700" id="nombre-{{ $proveedor['id'] }}" name="nombre" value="{{ $proveedor['nombre'] }}" required>
+                </div>
+                <div class="form-group">
+                    <label for="correo-{{ $proveedor['id'] }}" class="text-lg font-bold">Correo</label>
+                    <input type="text" class="form-control w-full p-2 pl-10 text-sm text-gray-700" id="correo-{{ $proveedor['id'] }}" name="correo" value="{{ $proveedor['correo'] }}" required>
+                </div>
+                <div class="form-group">
+                    <label for="telefono-{{ $proveedor['id'] }}" class="text-lg font-bold">Teléfono</label>
+                    <input type="text" class="form-control w-full p-2 pl-10 text-sm text-gray-700" id="telefono-{{ $proveedor['id'] }}" name="telefono" value="{{ $proveedor['telefono'] }}" required>
+                </div>
+                <div class="form-group">
+                    <label for="direccion-{{ $proveedor['id'] }}" class="text-lg font-bold">Dirección</label>
+                    <input type="text" class="form-control w-full p-2 pl-10 text-sm text-gray-700" id="direccion-{{ $proveedor['id'] }}" name="direccion" value="{{ $proveedor['direccion'] }}" required>
+                </div>
+                <div class="text-center">
+     <button type="submit" class="btn btn-primary mb-4 class="btn btn-primary mb-4 text-center" style="background-color: #ffc600; color: #FFFFFF;">Actualizar Proveedor</button>
+</div>            </form>
+        </div>
+    </td>
+</tr>
                 @endforeach
             </tbody>
         </table>
@@ -99,44 +94,55 @@
         <h2>No hay proveedores disponibles.</h2>
     </div>
     @endif
-    </div>
-    <div class="card">
+
+    <!-- Botón para agregar proveedor, visible solo para admins -->
+    <div class="text-center">
+
+    @if(auth()->user()->usertype === 'admin')
+    <button class="btn btn-primary mb-4 class="btn btn-primary mb-4 text-center" style="background-color: #ffc600; color: #FFFFFF;" onclick="document.getElementById('providerForm').style.display='flex'">
+        Agregar Proveedor
+    </button>
+    @endif
+</div>
+
     <!-- Formulario para agregar un nuevo proveedor -->
     <div id="providerForm" style="display: none; justify-content: center;">
-        <div class="card-body">
+    <div class="w-full p-4 pt-6 md:p-6 lg:p-12 bg-white rounded shadow-md">
+        <h1 class="text-5xl font-bold text-[#ffc600] text-center mb-4">Agregar Proveedor</h1>
         <form action="{{ route('proveedors.store') }}" method="POST" class="mt-4">
             @csrf
             <div class="form-group">
-                <label for="nombre">Nombre del Proveedor</label>
-                <input type="text" class="form-control" id="nombre" name="nombre" required>
+                <label for="nombre" class="text-lg font-bold">Nombre del Proveedor</label>
+                <input type="text" class="form-control w-full p-2 pl-10 text-sm text-gray-700" id="nombre" name="nombre" required>
             </div>
             <div class="form-group">
-                <label for="correo">Correo</label>
-                <input type="text" class="form-control" id="correo" name="correo" required>
+                <label for="correo" class="text-lg font-bold">Correo</label>
+                <input type="text" class="form-control w-full p-2 pl-10 text-sm text-gray-700" id="correo" name="correo" required>
             </div>
             <div class="form-group">
-                <label for="telefono">Teléfono</label>
-                <input type="text" class="form-control" id="telefono" name="telefono" required>
+                <label for="telefono" class="text-lg font-bold">Teléfono</label>
+                <input type="text" class="form-control w-full p-2 pl-10 text-sm text-gray-700" id="telefono" name="telefono" required>
             </div>
             <div class="form-group">
-                <label for="direccion">Dirección</label>
-                <input type="text" class="form-control" id="direccion" name="direccion" required>
+                <label for="direccion" class="text-lg font-bold">Dirección</label>
+                <input type="text" class="form-control w-full p-2 pl-10 text-sm text-gray-700" id="direccion" name="direccion" required>
             </div>
             <br>
-            <button type="submit" class="btn btn-success">Guardar Proveedor</button>
+            <div class="text-center">
+     <button type="submit" class="btn btn-primary mb-4 class="btn btn-primary mb-4 text-center" style="background-color: #ffc600; color: #FFFFFF;">Guardar Proveedor</button>
+</div>
         </form>
-    </div>
     </div>
 </div>
 
-<script>
-    function toggleEditForm(providerId) {
-        var form = document.getElementById('editForm-' + providerId);
-        if (form.style.display === 'none') {
-            form.style.display = 'table-row';
-        } else {
-            form.style.display = 'none';
+    <script>
+        function toggleEditForm(providerId) {
+            var form = document.getElementById('editForm-' + providerId);
+            if (form.style.display === 'none') {
+                form.style.display = 'table-row';
+            } else {
+                form.style.display = 'none';
+            }
         }
-    }
-</script>
+    </script>
 @endsection

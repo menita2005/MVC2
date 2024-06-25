@@ -1,28 +1,21 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <!-- Formulario para crear una nueva categoría -->
-    <br><br>
-    <h1 class="fs-1" style="text-align: center;">Lista de Categorías</h1>
-
-    <!-- Botón para agregar categoría, visible solo para admins -->
-    @if(auth()->user()->usertype === 'admin')
-    <button class="btn btn-primary mb-4" style="display: flex; justify-content: center;" onclick="document.getElementById('categoryForm').style.display='flex'">Agregar Categoría</button>
-    @endif
+<div class="w-full p-4 pt-6 md:p-6 lg:p-12 bg-white rounded shadow-md">
+    <h1 class="text-5xl font-bold text-[#ffc600] text-center mb-4">Lista de Categorías</h1>
 
     <br><br>
-    <div style="display: flex; justify-content: center;">
+    <div class="table-responsive">
         @if(!empty($categorias))
-        <table class="table table-bordered" style="border-collapse: collapse; width: 50%;">
+        <table class="table-auto w-full mb-4">
             <thead>
-                <tr>@if(auth()->user()->usertype === 'admin')
-                    <th  style="background-color: #73e6c48f; color: #000000; padding: 10px;">ID</th>
-                    @endif
-                    <th style="background-color: #73e6c48f; color: #000000; padding: 10px; text-align: center;">Nombre</th>
-
+                <tr>
                     @if(auth()->user()->usertype === 'admin')
-                    <th style="background-color: #73e6c48f; color: #000000; padding: 10px;">Acciones</th>
+                    <th style="background-color: #efb810; color: #FFFFFF; padding: 10px; text-align: center;">ID</th>
+                    @endif
+                    <th style="background-color: #efb810; color: #FFFFFF; padding: 10px; text-align: center;">Nombre</th>
+                    @if(auth()->user()->usertype === 'admin')
+                    <th style="background-color: #efb810; color: #FFFFFF; padding: 10px; text-align: center;">Acciones</th>
                     @endif
                 </tr>
             </thead>
@@ -30,11 +23,11 @@
                 @foreach ($categorias as $categoria)
                 <tr>
                     @if(auth()->user()->usertype === 'admin')
-                    <td>{{ $categoria['id'] }}</td>
+                    <td class="px-4 py-2" style="background-color: #efb71045; color: #000; padding: 10px; text-align: center;">{{ $categoria['id'] }}</td>
                     @endif
-                    <td style="display: flex; justify-content: center;">{{ $categoria['Nombre'] }}</td>
+                    <td class="px-4 py-2" style="background-color: #efb71045; color: #000; padding: 10px; text-align: center;">{{ $categoria['Nombre'] }}</td>
                     @if(auth()->user()->usertype === 'admin')
-                    <td>
+                    <td class="px-4 py-2" style="background-color: #efb71045; color: #000; padding: 10px; text-align: center;">
                         <!-- Botón de Editar -->
                         <button class="btn btn-primary mb-1" onclick="toggleEditForm({{ $categoria['id'] }})">Editar</button>
                         <!-- Formulario de Eliminar -->
@@ -47,7 +40,7 @@
                         <form action="{{ route('categorias.toggleStatus', $categoria['id']) }}" method="POST">
                             @csrf
                             <button type="submit" class="btn btn-secondary mt-1">
-                                {{ $categoria['status'] ? 'Desactivar' : 'Activar' }}
+                                {{ $categoria['status']? 'Desactivar' : 'Activar' }}
                             </button>
                         </form>
                     </td>
@@ -60,10 +53,10 @@
                             @csrf
                             @method('PUT')
                             <div class="form-group">
-                                <label for="Nombre-{{ $categoria['id'] }}">Nombre de la Categoría</label>
-                                <input type="text" class="form-control" id="Nombre-{{ $categoria['id'] }}" name="Nombre" value="{{ $categoria['Nombre'] }}" required>
+                                <label for="Nombre-{{ $categoria['id'] }}" class="text-lg font-bold">Nombre de la Categoría</label>
+                                <input type="text" class="form-control w-full p-2 pl-10 text-sm text-gray-700" id="Nombre-{{ $categoria['id'] }}" name="Nombre" value="{{ $categoria['Nombre'] }}" required>
                             </div>
-                            <button type="submit" class="btn btn-success mt-3">Actualizar Categoría</button>
+                            <button type="submit" class="btn btn-success w-full p-2 pl-10 text-sm text-white mt-3">Actualizar Categoría</button>
                         </form>
                     </td>
                 </tr>
@@ -71,18 +64,32 @@
             </tbody>
         </table>
         @else
-        <p>No hay categorías disponibles.</p>
+        <p class="text-lg font-bold text-center">No hay categorías disponibles.</p>
         @endif
     </div>
-    <!-- Formulario para agregar una nueva categoría -->
-    <div id="categoryForm" style="display: none; justify-content: center;">
+
+    <!-- Botón para agregar categoría, visible solo para admins -->
+    @if(auth()->user()->usertype === 'admin')
+    <div class="text-center">
+
+    <button class="btn btn-primary mb-4 class="btn btn-primary mb-4 text-center" style="background-color: #ffc600; color: #FFFFFF;" onclick="document.getElementById('categoryForm').style.display='flex'">Agregar Categoría</button>
+</div>
+    @endif
+
+  <!-- Formulario para agregar una nueva categoría -->
+<div id="categoryForm" style="display: none; justify-content: center;">
+    <div class="w-full p-4 pt-6 md:p-6 lg:p-12 bg-white rounded shadow-md">
+
         <form action="{{ route('categorias.store') }}" method="POST" class="mt-4">
             @csrf
-            <div class="form-group">
-                <label for="Nombre">Nombre de la Categoría</label>
-                <input type="text" class="form-control" id="Nombre" name="Nombre" required>
+            <div class="form-group mb-4">
+                <label for="Nombre" class="text-lg font-bold block mb-2">Nombre de la Categoría</label>
+                <input type="text" class="form-control w-full p-2 pl-10 text-sm text-gray-700 border border-gray-300 rounded-md" id="Nombre" name="Nombre" required>
             </div>
-            <button type="submit" class="btn btn-success">Guardar Categoría</button>
+            <div class="text-center">
+
+            <button type="submit" class="btn btn-primary mb-4 class="btn btn-primary mb-4 text-center" style="background-color: #ffc600; color: #FFFFFF;">Guardar Categoría</button>
+</div>
         </form>
     </div>
 </div>

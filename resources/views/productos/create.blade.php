@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container min-h-screen bg-blue-500">
-    <h1 class="fs-1 text-center">Agregar Producto</h1>
+<div class="w-full p-4 pt-6 md:p-6 lg:p-12 bg-white rounded shadow-md">
     <br><br>
+    <h1 class="fs-1 text-5xl font-bold text-[#ffc600] text-center mb-4">Agregar Producto</h1>
 
     @if (session('message'))
         <div class="alert alert-info">
@@ -23,41 +23,43 @@
         </div>
     @endif
 
-    <form action="{{ route('productos.store') }}" method="POST">
+    <form action="{{ route('productos.store') }}" method="POST" class="mt-4">
         @csrf
         <div class="form-group">
-            <label for="NombreP">Nombre del Producto</label>
-            <input type="text" class="form-control" id="NombreP" name="NombreP" required>
+            <label for="NombreP" class="text-lg font-bold">Nombre del Producto</label>
+            <input type="text" class="form-control w-full p-2 pl-10 text-sm text-gray-700" id="NombreP" name="NombreP" required>
         </div>
         <div class="form-group">
-            <label for="Descripcion">Descripción</label>
-            <textarea class="form-control" id="Descripcion" name="Descripcion" required></textarea>
+            <label for="Descripcion" class="text-lg font-bold">Descripción</label>
+            <textarea class="form-control w-full p-2 pl-10 text-sm text-gray-700" id="Descripcion" name="Descripcion" required></textarea>
         </div>
         <div class="form-group">
-            <label for="Precio">Precio</label>
-            <input type="number" class="form-control" id="Precio" name="Precio" required>
+            <label for="Precio" class="text-lg font-bold">Precio</label>
+            <input type="number" class="form-control w-full p-2 pl-10 text-sm text-gray-700" id="Precio" name="Precio" required>
         </div>
         <div class="form-group">
-            <label for="stock">Stock</label>
-            <input type="number" class="form-control" id="stock" name="stock" required>
+            <label for="stock" class="text-lg font-bold">Stock</label>
+            <input type="number" class="form-control w-full p-2 pl-10 text-sm text-gray-700" id="stock" name="stock" required>
         </div>
         <div class="form-group">
-            <label for="categoria_id">Categoría</label>
-            <select class="form-control" id="categoria_id" name="categoria_id" required>
+            <label for="categoria_id" class="text-lg font-bold">Categoría</label>
+            <select class="form-control w-full p-2 pl-10 text-sm text-gray-700" id="categoria_id" name="categoria_id" required>
                 @foreach($categorias as $categoria)
                     <option value="{{ $categoria['id'] }}">{{ $categoria['Nombre'] }}</option>
                 @endforeach
             </select>
         </div>
         <div class="form-group">
-            <label for="proveedor_id">Proveedor</label>
-            <select class="form-control" id="proveedor_id" name="proveedor_id" required>
+            <label for="proveedor_id" class="text-lg font-bold">Proveedor</label>
+            <select class="form-control w-full p-2 pl-10 text-sm text-gray-700" id="proveedor_id" name="proveedor_id" required>
                 @foreach($proveedores as $proveedor)
                     <option value="{{ $proveedor['id'] }}">{{ $proveedor['nombre'] }}</option>
                 @endforeach
             </select>
         </div>
-        <button type="submit" class="btn btn-success mt-3">Agregar Producto</button>
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary mb-4" style="background-color: #ffc600; color: #FFFFFF;">Agregar Producto</button>
+        </div>
     </form>
 </div>
 @endsection
