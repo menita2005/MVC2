@@ -99,7 +99,7 @@
     <div class="text-center">
 
     @if(auth()->user()->usertype === 'admin')
-    <button class="btn btn-primary mb-4 class="btn btn-primary mb-4 text-center" style="background-color: #ffc600; color: #FFFFFF;" onclick="document.getElementById('providerForm').style.display='flex'">
+    <button class="btn btn-primary mb-4" class="btn btn-primary mb-4 text-center" style="background-color: #ffc600; color: #FFFFFF;" onclick="document.getElementById('providerForm').style.display='flex'">
         Agregar Proveedor
     </button>
     @endif

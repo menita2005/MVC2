@@ -7,7 +7,8 @@
     <br><br>
     <div class="table-responsive">
         @if(!empty($categorias))
-        <table class="table-auto w-full mb-4">
+        <div class="flex justify-center">
+        <table class="table-auto w-3/4 mb-4 center">
             <thead>
                 <tr>
                     @if(auth()->user()->usertype === 'admin')
@@ -29,7 +30,7 @@
                     @if(auth()->user()->usertype === 'admin')
                     <td class="px-4 py-2" style="background-color: #efb71045; color: #000; padding: 10px; text-align: center;">
                         <!-- Botón de Editar -->
-                        <button class="btn btn-primary mb-1" onclick="toggleEditForm({{ $categoria['id'] }})">Editar</button>
+                        <a href="{{ route('categorias.edit', $categoria['id']) }}" class="btn btn-primary mb-1" style="background-color: #ffc600; color: #FFFFFF;">Editar</a>
                         <!-- Formulario de Eliminar -->
                         <form action="{{ route('categorias.destroy', $categoria['id']) }}" method="POST">
                             @csrf
@@ -46,6 +47,7 @@
                     </td>
                     @endif
                 </tr>
+                <div id="providerForm" style="display: none; justify-content: center;">
                 <!-- Formulario de Edición -->
                 <tr id="editForm-{{ $categoria['id'] }}" style="display: none;">
                     <td colspan="3">
@@ -60,6 +62,7 @@
                         </form>
                     </td>
                 </tr>
+                </div>
                 @endforeach
             </tbody>
         </table>
@@ -72,7 +75,7 @@
     @if(auth()->user()->usertype === 'admin')
     <div class="text-center">
 
-    <button class="btn btn-primary mb-4 class="btn btn-primary mb-4 text-center" style="background-color: #ffc600; color: #FFFFFF;" onclick="document.getElementById('categoryForm').style.display='flex'">Agregar Categoría</button>
+    <button class="btn btn-primary mb-4" class="btn btn-primary mb-4 text-center" style="background-color: #ffc600; color: #FFFFFF;" onclick="document.getElementById('categoryForm').style.display='flex'">Agregar Categoría</button>
 </div>
     @endif
 
@@ -88,7 +91,7 @@
             </div>
             <div class="text-center">
 
-            <button type="submit" class="btn btn-primary mb-4 class="btn btn-primary mb-4 text-center" style="background-color: #ffc600; color: #FFFFFF;">Guardar Categoría</button>
+            <button type="submit" class="btn btn-primary mb-4" class="btn btn-primary mb-4 text-center" style="background-color: #ffc600; color: #FFFFFF;">Guardar Categoría</button>
 </div>
         </form>
     </div>

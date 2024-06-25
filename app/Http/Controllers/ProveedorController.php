@@ -30,7 +30,7 @@ class ProveedorController extends Controller
         // Si hay proveedores, verificar el tipo de usuario para filtrar los activos
         if (auth()->user()->usertype === 'admin') {
             // Si es admin, mostrar todos los proveedores
-            $proveedores = collect($proveedores); // Convertir a colección para poder usar métodos de colección
+            $proveedores = collect($proveedores); // Convertir colección para poder usar métoa dos de colección
         } else {
             // Si no es admin, filtrar solo los proveedores activos
             $proveedores = collect($proveedores)->where('status', true);

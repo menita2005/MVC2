@@ -54,6 +54,27 @@ class CategoriaController extends Controller
     // Redireccionar de vuelta a la lista de categoriaes con un mensaje de éxito
     return redirect()->route('categorias.index')->with('success', 'Estado del categoria actualizado exitosamente.');
 }
+public function edit($id)
+{
+    // Buscar la categoría por ID
+    $categoria = Categoria::find($id);
+
+    if (!$categoria) {
+        return redirect()->route('categorias.index')->with('error', 'Categoría no encontrada.');
+    }
+
+    // Obtener todas las categorías de la API
+    $response = Http::get("http://localhost/ApiRestProjet/ApiRestSgi/public/api/Categoria");
+
+    if ($response->successful()) {
+        $categorias = $response->json();
+    } else {
+        $categorias = [];
+    }
+
+    return view('categorias.edit', compact('categoria', 'categorias'));
+}
+
 
     public function store(Request $request)
     {

@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container min-h-screen bg-blue-500">
+
+    <!-- Mensajes de notificación -->
     @if (session('message'))
         <div class="alert alert-info">
             {{ session('message') }}
@@ -19,14 +21,15 @@
             {{ session('error') }}
         </div>
     @endif
-<br><br>
+
+    <br><br>
     <h1 class="text-5xl font-bold text-[#ffc600] text-center mb-4">Editar Compra</h1>
-<br><br>
+    <br><br>
 
     <div class="card mt-4">
-        <div class="card-header">Editar Compra</div>
+        <div class="card-header text-2xl font-semibold">Editar Compra</div>
         <div class="card-body">
-            <form action="{{ route('compras.update', $compra->id) }}" method="POST">
+            <form action="{{ route('compras.update', $compra['id']) }}" method="POST">
                 @csrf
                 @method('PUT')
 
@@ -38,6 +41,7 @@
                                 {{ $proveedor['nombre'] }}
                             </option>
                         @endforeach
+                    </select>
                     @error('proveedor_id')
                         <div class="text-danger">{{ $message }}</div>
                     @enderror

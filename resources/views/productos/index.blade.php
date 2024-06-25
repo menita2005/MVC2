@@ -29,7 +29,7 @@
 
     @if (!empty($productos))
         <div class="table-responsive">
-            <table class="table table-bordered w-full mb-4">
+            <table class="table  w-full mb-4">
                 <thead>
                     <tr>
                         <th style="background-color: #efb810; color: #FFFFFF; padding: 10px; text-align: center;">ID</th>
@@ -94,7 +94,7 @@
                     <label for="categoria_id-{{ $producto['id'] }}" class="text-lg font-bold">Categoría</label>
                     <select class="form-control w-full p-2 pl-10 text-sm text-gray-700" id="categoria_id-{{ $producto['id'] }}" name="categoria_id" required>
                         @foreach($categorias as $categoria)
-                            <option value="{{ $categoria['id'] }}" {{ $producto['categoria_id'] == $categoria['id']? 'elected' : '' }}>{{ $categoria['Nombre'] }}</option>
+                            <option value="{{ $categoria['id'] }}" {{ $producto['categoria_id'] == $categoria['id']? 'selected' : '' }}>{{ $categoria['Nombre'] }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -102,7 +102,7 @@
                     <label for="proveedor_id-{{ $producto['id'] }}" class="text-lg font-bold">Proveedor</label>
                     <select class="form-control w-full p-2 pl-10 text-sm text-gray-700" id="proveedor_id-{{ $producto['id'] }}" name="proveedor_id" required>
                         @foreach($proveedores as $proveedor)
-                            <option value="{{ $proveedor['id'] }}" {{ $producto['proveedor_id'] == $proveedor['id']? 'elected' : '' }}>{{ $proveedor['nombre'] }}</option>
+                            <option value="{{ $proveedor['id'] }}" {{ $producto['proveedor_id'] == $proveedor['id']? 'selected' : '' }}>{{ $proveedor['nombre'] }}</option>
                         @endforeach
                     </select>
                 </div>

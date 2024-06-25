@@ -106,7 +106,7 @@
                 </div>
 
                 <div class="text-center">
-                <button type="submit" class="btn btn-primary mb-4 class="btn btn-primary mb-4 text-center" style="background-color: #ffc600; color: #FFFFFF;">Crear Compra</button>
+                <button type="submit" class="btn btn-primary mb-4" class="btn btn-primary mb-4 text-center" style="background-color: #ffc600; color: #FFFFFF;">Crear Compra</button>
             </div>                </form>
         </div>
     </div>

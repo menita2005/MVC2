@@ -37,15 +37,20 @@ class CompraController extends Controller
     {
         // Obtener el usuario autenticado
         $user = Auth::user();
-
-        // Obtener los proveedores del usuario autenticado
-        $proveedores = Proveedor::where('user_id', $user->id)->get();
-
+        
+        // Obtener todos los proveedores
+        $proveedores = Proveedor::all();
+        
+        // Filtrar los proveedores activos
+        $proveedores = collect($proveedores)->where('status', true);
+    
         // Obtener los productos del usuario autenticado
         $productos = Producto::where('user_id', $user->id)->get();
-
+    
         return view('compras.create', compact('proveedores', 'productos'));
     }
+    
+
 
     public function store(Request $request)
     {
