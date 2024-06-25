@@ -38,23 +38,20 @@ class ProveedorController extends Controller
     
         return view('proveedors.index', compact('proveedores'));
     }
-public function toggleStatus($id)
-{
-    // Buscar el proveedor por ID
-    $proveedor = Proveedor::findOrFail($id);
-
-    // Cambiar el estado (invertirlo)
-    $proveedor->status = !$proveedor->status;
-
-    // Guardar el proveedor actualizado
-    $proveedor->save();
-
-    // Redireccionar de vuelta a la lista de proveedores con un mensaje de éxito
-    return redirect()->route('proveedors.index')->with('success', 'Estado del proveedor actualizado exitosamente.');
-}
-
-
-
+    public function toggleStatus($id)
+    {
+        // Buscar el proveedor por ID
+        $proveedor = Proveedor::findOrFail($id);
+    
+        // Cambiar el estado (invertirlo)
+        $proveedor->status = !$proveedor->status;
+    
+        // Guardar el proveedor actualizado
+        $proveedor->save();
+    
+        // Redireccionar de vuelta a la lista de proveedores con un mensaje de éxito
+        return redirect()->route('proveedors.index')->with('success', 'Estado del proveedor actualizado exitosamente.');
+    }
     public function store(Request $request)
     {
         // Validar los datos entrantes de la solicitud
@@ -62,7 +59,7 @@ public function toggleStatus($id)
             'nombre' => 'required|string|max:255',
             'telefono' => 'required|string|max:20',
             'direccion' => 'required|string|max:255',
-            'correo' => 'required|email|max:255'
+            'correo' => 'required|email|max:255|unique:proveedors', // Asegura que el correo sea único en la tabla proveedors
         ]);
 
         if ($validator->fails()) {
@@ -103,7 +100,7 @@ public function toggleStatus($id)
             'nombre' => 'required|string|max:255',
             'telefono' => 'required|string|max:20',
             'direccion' => 'required|string|max:255',
-            'correo' => 'required|email|max:255'
+            'correo' => 'required|email|max:255|unique:proveedors,correo,'.$id, // Asegura que el correo sea único excluyendo el proveedor actual
         ]);
 
         if ($validator->fails()) {
