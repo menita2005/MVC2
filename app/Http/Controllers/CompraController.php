@@ -168,5 +168,28 @@ class CompraController extends Controller
 
         return redirect()->route('compras.index')->with('success', 'Compra eliminada exitosamente.');
     }
+    // EDIT //
+
+    public function edit($id)
+{
+    // Obtener la compra por su ID
+    $compra = Compra::find($id);
+
+    if (!$compra) {
+        return redirect()->route('compras.index')->with('error', 'Compra no encontrada.');
+    }
+
+    // Obtener el usuario autenticado
+    $user = Auth::user();
+
+    // Obtener los proveedores del usuario autenticado
+    $proveedores = Proveedor::where('user_id', $user->id)->get();
+
+    // Obtener los productos del usuario autenticado
+    $productos = Producto::where('user_id', $user->id)->get();
+
+    // Redirigir a la vista de edición de la compra con los datos necesarios
+    return view('compras.edit', compact('compra', 'proveedores', 'productos'));
+}
 }
 

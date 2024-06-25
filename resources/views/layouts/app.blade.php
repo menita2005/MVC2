@@ -18,7 +18,7 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans antialiased">
-        <div class="min-h-screen bg-blue-500">
+        <div class="min-h-screen bg-500">
             @if (Auth::check())
             @if (Auth::user()->usertype == 'Encargado')
                 @include('layouts.navigation')
