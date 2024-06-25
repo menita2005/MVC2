@@ -20,7 +20,7 @@
         </div>
     @endif
 <br><br>
-    <h1 class="fs-1 text-center">Lista de Compras</h1>
+    <h1 class="text-5xl font-bold text-[#ffc600] text-center mb-4">Lista de Compras</h1>
 <br><br>
 
     {{-- Mostrar lista de compras si hay --}}
