@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container min-h-screen bg-blue-500">
+<div class="container min-h-screen bg-500">
 
     <!-- Mensajes de notificación -->
     @if (session('message'))
