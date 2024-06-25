@@ -20,6 +20,9 @@
                         El administrador podrá ingresar categorías, proveedores y productos, seguido de que puede realizar las compras y ventas.
                     </p>
                     <p class="text-lg text-gray-700 leading-relaxed mb-4">
+                       !RECUERDA¡ Primero debes ingresar una categoria, luego un proveedor y por ultimo un producto para que no tengas ningun inconveniente.
+                    </p>
+                    <p class="text-lg text-gray-700 leading-relaxed mb-4">
                         El administrador tendrá una vista en la cual va a tener una lista de los encargados que estén registrados en la plataforma y podrá desactivarlos o activarlos si llegase a haber algún inconveniente.
                     </p>
                     
