@@ -13,7 +13,7 @@ class ProveedorController extends Controller
     public function index()
     {
         // Obtener proveedores de la API
-        $response = Http::get("http://localhost/ApiRestProjet/ApiRestSgi/public/api/Proveedors");
+        $response = Http::get("https://wallinventary.azurewebsites.net/api/Proveedors");
         
         // Verificar si la respuesta es exitosa y es un array
         if ($response->successful() && is_array($response->json())) {

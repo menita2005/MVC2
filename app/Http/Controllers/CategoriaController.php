@@ -16,7 +16,7 @@ class CategoriaController extends Controller
         $userType = auth()->user()->usertype;
     
         // Obtener Categorias de la API
-        $response = Http::get("http://localhost/ApiRestProjet/ApiRestSgi/public/api/Categoria");
+        $response = Http::get("https://wallinventary.azurewebsites.net/api/Categoria");
     
         if ($response->successful()) {
             // Obtener todas las categorías desde la API
@@ -64,7 +64,7 @@ public function edit($id)
     }
 
     // Obtener todas las categorías de la API
-    $response = Http::get("http://localhost/ApiRestProjet/ApiRestSgi/public/api/Categoria");
+    $response = Http::get("https://wallinventary.azurewebsites.net/api/Categoria");
 
     if ($response->successful()) {
         $categorias = $response->json();

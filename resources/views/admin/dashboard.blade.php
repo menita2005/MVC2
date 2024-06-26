@@ -14,11 +14,18 @@
                         <li>Configuración de permisos y accesos.</li>
                         <li>Supervisión de actividades y registros.</li>
                         <li>Personalización y ajustes del sitio.</li>
-                    </ul>
+                        </ul>
+                        <br>
+                    <ul class="list-disc list-inside text-red-200">
+                    <li><a href="https://expo.dev/accounts/nicolleee07/projects/myappmovil/builds/7ed45a80-5819-4d9e-94dc-4530831b7b37">--> Aplicacion Movil para Supervisar registros <--</a></li>
+                    <br>
+                        <li><img src="{{ asset('Recursos/qrapp.png') }}"  class="w-1/2 h-auto" alt="Logo"></li>
+                </ul>
                 </div>
-                <div class="w-1/3 p-6">
-                    <img src="{{ asset('Recursos/logonegro.png') }}"  class="w-full h-auto" alt="Logo">
+                <div class="w-1/3 pl-6">
+                    <img src="{{ asset('Recursos/logonegro.png') }}"  class="w-full h-auto pl-6" alt="Logo">
                 </div>
+                
             </div>
         </main>
         </x-slot>

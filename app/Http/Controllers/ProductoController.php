@@ -11,7 +11,7 @@ class ProductoController extends Controller
     public function index()
     {
         // Obtener productos de la API
-        $response = Http::get("http://localhost/ApiRestProjet/ApiRestSgi/public/api/productos");
+        $response = Http::get("https://wallinventary.azurewebsites.net/api/productos");
 
         // Verificar si la respuesta es exitosa y es un array
         if ($response->successful() && is_array($response->json())) {
@@ -21,8 +21,8 @@ class ProductoController extends Controller
         }
 
         // Obtener categorías y proveedores
-        $categorias = Http::get("http://localhost/ApiRestProjet/ApiRestSgi/public/api/Categoria")->json();
-        $proveedores = Http::get("http://localhost/ApiRestProjet/ApiRestSgi/public/api/Proveedors")->json();
+        $categorias = Http::get("https://wallinventary.azurewebsites.net/api/Categoria")->json();
+        $proveedores = Http::get("https://wallinventary.azurewebsites.net/api/Proveedors")->json();
 
         // Verificar si no hay productos
         if (empty($productos)) {
@@ -34,8 +34,8 @@ class ProductoController extends Controller
     }
     public function create()
 {
-    $categorias = Http::get("http://localhost/ApiRestProjet/ApiRestSgi/public/api/Categoria")->json();
-    $proveedores = Http::get("http://localhost/ApiRestProjet/ApiRestSgi/public/api/Proveedors")->json();
+    $categorias = Http::get("https://wallinventary.azurewebsites.net/api/Categoria")->json();
+    $proveedores = Http::get("https://wallinventary.azurewebsites.net/api/Proveedors")->json();
     return view('productos.create', compact('categorias', 'proveedores'));
 }
     
