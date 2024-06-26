@@ -1,7 +1,7 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Build and deploy PHP app to Azure Web App - WaIIinventary
+name: Build and deploy PHP app to Azure Web App - Walllinventary
 
 on:
   push:
@@ -61,15 +61,15 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v1
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_CFDD357F9C6946E798E6E0C9FB4BE180 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_01F07C9721B645E891CABA331E72DF6C }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_586F9BB7F8F74F079F0835C3ABF5B162 }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_E387A38889E049579A64ABFB2BFE5665 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_47222E36CDE14E7FB30FD08586645505 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_AF593FF6F9894429AAA280CD8935D186 }}
 
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v2
         id: deploy-to-webapp
         with:
-          app-name: 'WaIIinventary'
+          app-name: 'Walllinventary'
           slot-name: 'Production'
           package: .
           
