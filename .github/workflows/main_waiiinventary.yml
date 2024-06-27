@@ -39,10 +39,6 @@ jobs:
         with:
           name: php-app
           path: release.zip
-           - name: Install npm dependencies and build
-        run: |
-          npm install
-          npm run build
 
   deploy:
     runs-on: ubuntu-latest
@@ -65,9 +61,9 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v1
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_DCA270260D5F44E1AB42062410E79FAF }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_4F7E2C30C7C9496EAD8EE07F745531B0 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_1ECBD3DB184F4AF8A2D048A3FF8BC37E }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_F52E6A3A90FC4A9F9954CA1C7090C5A1 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_9B2AA2BD52C94966AF9D6F4E1E0AD041 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_7BA1811A5BF34B5C8AB882245E916B39 }}
 
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v2
