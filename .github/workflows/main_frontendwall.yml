@@ -39,10 +39,6 @@ jobs:
         with:
           name: php-app
           path: release.zip
-      - name: Install npm dependencies and build
-           run: 
-          npm install
-          npm run build
 
   deploy:
     runs-on: ubuntu-latest
@@ -50,6 +46,8 @@ jobs:
     environment:
       name: 'Production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+    permissions:
+      id-token: write #This is required for requesting the JWT
 
     steps:
       - name: Download artifact from build job
@@ -59,6 +57,13 @@ jobs:
 
       - name: Unzip artifact for deployment
         run: unzip release.zip
+      
+      - name: Login to Azure
+        uses: azure/login@v1
+        with:
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_BF1BF18629454C5AA81167349D148B6A }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_288292872E4F47A19C824188BA4054DA }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_0FB45F4F1B654335BFBA7068AD61ADE8 }}
 
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v2
@@ -66,5 +71,5 @@ jobs:
         with:
           app-name: 'FrontendWall'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_8F9AFFF1E7CC4943ADCB3902550C9FA3 }}
           package: .
+          
